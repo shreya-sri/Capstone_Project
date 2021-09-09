@@ -1,0 +1,81 @@
+			***PAGE 1***
+
+Applicant first name
+Applicant middle name (optional)
+Applicant surname (optional)
+
+Applicant fathers name (optional)
+Applicant mothers name (optional)
+
+Date of birth 
+
+Age (auto-calculated) (verify)
+
+Gender
+Mobile number (optional)
+email ID (optional)
+
+Marks of Identification (optional)
+Category
+
+Relation with PwD
+Photo (upload)
+Signature/Thumb print (upload)
+
+Address
+Line 1 Line 2 (optional) Line 3 (optional)
+
+State
+District
+City/Sub district/Tehsil
+
+Village (optional)
+Pincode
+Nature of document for Address proof
+
+Address proof (upload)
+CLICK NEXT
+
+			***PAGE 2***
+
+Do you have disability certificate?
+
+Disability type (more than one)
+Disability since Disability by birth
+Please select disability since (if disability since)
+Disability Area (more than one)
+
+Hospital treating disability (optional)
+Pension card number (optional)
+
+Disability due to (optional)
+CLICK NEXT
+
+			***PAGE 3***
+
+Employment or Unemployed (optional)
+Occupation (optional)
+
+BPL/APL (optional)
+Personal income (Annual) (optional)
+
+			
+			***PAGE 4***
+
+Identity proof
+Upload Identity proof
+
+TIN (NPR)
+Adhaar No
+I Agree to share ADHAAR info with GOVT
+
+Enter captcha
+
+I have read and agree to the terms and conditions
+CLICK PROCCEED
+
+			***PAGE 5***
+
+Review application
+CLICK CONFIRM  
+

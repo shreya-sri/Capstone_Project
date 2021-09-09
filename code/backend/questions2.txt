@@ -1,0 +1,177 @@
+0 [required] First name:
+1 [optional] Middle name:
+2 [optional] Last name:
+3 [optional] Father's name:
+4 [optional] Mother's name:
+5 [required] Date of birth:
+6 [required] Age:
+7 [choice] Gender:
+---------
+Other
+Male
+Female
+Transgender
+Gender non-Conforming
+
+8 [required] Mobile No.
+9 [required] Email ID:
+10 [optional] Marks of Identification:
+11 [choice] Category:
+---------
+General
+SC
+ST
+OBC
+Other
+
+12 [choice] Relation with PwD:
+---------
+self
+Family member
+Other
+
+13 [required] Upload Photo:
+14 [required] Upload Signature:
+15 [optional] Enter Address:
+16 [choice] Enter State:
+---------
+Karnataka
+
+17 [choice] Enter City:
+---------
+Bengaluru
+
+18 [optional] Enter Village (if applicable):
+19 [required] Enter Pincode:
+20 [choice] Choice of Address Proof:
+---------
+Aadhar Card
+Drivers License
+Pan Card
+
+21 [required] Upload Address Proof:
+22 [radio] Disability certificate:
+
+ Yes
+
+
+ No
+
+
+23 [checkbox] Disability type:
+
+ Blindness
+
+
+ Low-Vision
+
+
+ Leprosy Cured Persons
+
+
+ Hearing Impairment
+
+
+ Locomotor Disability
+
+
+ Dwarfism
+
+
+ Intellectual Disability
+
+
+ Mental Illness
+
+
+ Autism Spectrum Disorder
+
+
+ Cerebral Palsy
+
+
+ Muscular Dystrophy
+
+
+ Chronic Neurological Conditions
+
+
+ Specific Learning Disabilities
+
+
+ Multiple Scelrosis
+
+
+ Speech and Language Disability
+
+
+ Thalassemia
+
+
+ Hemophilia
+
+
+ Sickle Cell Disease
+
+
+ Multiple Disabilities including Deaf-Blindness
+
+
+ Acid Attack Survivors
+
+
+ Parkinson's Disease
+
+
+24 [radio] Disability since when:
+
+ Disability since
+
+
+ Disability by Birth
+
+
+25 [optional] Disability Since (if not at birth):
+26 [optional] Hospital Treating Disability (if any):
+27 [optional] Enter Pension Card Number (if applicable):
+28 [choice] Disability Due to:
+---------
+Accident
+Diseases
+Infections
+Hereditary
+Congenital
+Medicine
+
+29 [choice] Employment Status:
+---------
+Employed
+Unemployed
+
+30 [choice] Enter Occupation:
+---------
+Agriculture
+Professional and Technical
+Govt. Servant
+Clerical and Bank
+Other
+
+31 [choice] Poverty Status:
+---------
+Above Poverty Line
+Below Poverty Line
+
+32 [choice] Enter Annual Income:
+---------
+<02,00,000
+02,00,000-05,00,000
+>05,00,000
+
+33 [choice] Choice of ID Proof:
+---------
+Aadhar Card
+Drivers License
+Pan Card
+
+34 [required] Upload ID Proof:
+35 [required] Enter ID Proof Number:
