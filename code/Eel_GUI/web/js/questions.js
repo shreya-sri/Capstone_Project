@@ -39,9 +39,10 @@ async function all_questions() {
                 }
                 else if (response[0] == "camera") {
                     var m = document.createElement('video');
-                    m.classList.add('p');
-                    m.style.cssText = "color: #66fcf1; font-size: 60px; text-align: center;";
-                    m.innerHTML = "Camera";
+                    m.classList.add('video');
+                    m.setAttribute('width', 240);
+                    m.setAttribute('height', 180);
+                    m.setAttribute('autoplay', '');
                     m.id = "response";
                     tab.appendChild(m);
                 }
@@ -129,15 +130,13 @@ async function all_questions() {
 
 
 function showTab(n) {
-    var nbtn = document.getElementsByClassName("next-button")[0];
-    var pbtn = document.getElementsByClassName("prev-button")[0];
-    nbtn.classList.add("animated");
-    nbtn.classList.add("fadeInTop");
-    pbtn.classList.add("animated");
-    pbtn.classList.add("fadeInTop");
     var x = document.getElementsByClassName("tab");
     x[n].style.display = "block";
     x[n].classList.add("show");
+    var question = x[n].getElementsByTagName("h1")[0];
+    add_cities(x[n]);
+    get_video(x[n]);
+    eel.read_question(question.innerHTML)();
     //console.log(x[n].id);
     if (n == 0) {
         document.getElementsByClassName("prev-button")[0].style.display = "none";
@@ -153,17 +152,13 @@ function showTab(n) {
 }
   
 function nextPrev(n) {
-    var nbtn = document.getElementsByClassName("next-button")[0];
-    var pbtn = document.getElementsByClassName("prev-button")[0];
-    nbtn.classList.remove("animated");
-    nbtn.classList.remove("fadeInTop");
-    pbtn.classList.remove("animated");
-    pbtn.classList.remove("fadeInTop");
     var x = document.getElementsByClassName("tab");
     var c = document.getElementsByClassName("show")[0];
     var currentTab = parseInt(c.id);
-    console.log(currentTab);
+    //console.log(currentTab);
     if (n == 1 && !validateForm(c)) {
+        var question = c.querySelector("h1");
+        eel.read_question(question.innerHTML)();
         return false;
     }
     x[currentTab].style.display = "none";
@@ -179,29 +174,65 @@ function nextPrev(n) {
   
 function validateForm(c) {
     var y, i, valid = true;
-    y = c.getElementsByTagName("input");
-    if (y.length == 1) {
-        if (y[0].value == "" && y[0].required == true) {
-            //console.log("false");
-            //y[i].className += " invalid";
+    y = c.querySelector("#response");
+    console.log(y.localName);
+    if (y.localName == "input") {
+        if (y.type == "text" || y.type == "email" || y.type == "number" || y.type == "date") {
+            if (y.value == "" && y.required == true) {
+                //console.log("false");
+                //y[i].className += " invalid";
+                valid = false;
+            }
+        }
+    }
+    else if (y.localName == "select") {
+        if (y.options[y.selectedIndex].value == "") {
             valid = false;
         }
     }
-    
+
     return valid; 
 }
 
-function get_video() {
-    var video = document.getElementsByClassName('video')[0];
-    // Get access to the camera!
-    if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-        // Not adding `{ audio: true }` since we only want video now
-        navigator.mediaDevices.getUserMedia({ video: true }).then(function() {
-        //video.src = window.URL.createObjectURL(stream);
-        // Avoid using this in new browsers, as it is going away.
-            const mediaStream = navigator.mediaDevices.getUserMedia({video: true});
-            video.srcObject = mediaStream;
-            video.play();
-        });
+function read_question() {
+    var tab = document.getElementsByClassName("show")[0];
+    var question = tab.getElementsByTagName("h1")[0];
+    eel.read_question(question.innerHTML)();
+}
+
+function get_video(x) {
+    var video = x.querySelector(".video");
+    if (video != null) {
+        if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+            navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
+                //video.src = window.URL.createObjectURL(stream);
+                video.srcObject = stream;
+                video.play();
+            });
+        }
+    }
+}
+
+async function add_cities(c) {
+    if (c.querySelector("#response").name == "City") {
+        var state = document.getElementsByName("State")[0];
+        console.log(state.name);
+        var city = document.getElementsByName("City")[0];
+        while (city.firstChild) {
+            city.removeChild(city.lastChild);
+        }
+        var o = document.createElement('option');
+        o.setAttribute('value', "");
+        city.appendChild(o);
+        console.log(state.options[state.selectedIndex].value)
+        var x = state.options[state.selectedIndex].value;
+        var cities = await eel.get_cities(x)();
+        for (var i=0; i<cities.length; i++) {
+            var o = document.createElement('option');
+            o.setAttribute('value', cities[i]);
+            o.style.cssText = "color: #000000; font-size: 20px; text-align: center;";
+            o.innerHTML = cities[i];
+            city.appendChild(o);
+        }
     }
 }

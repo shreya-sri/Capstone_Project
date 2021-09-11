@@ -1,12 +1,19 @@
 import io
 import eel
 import json
+from playsound import playsound
 
 from text_to_speech import speak
 
-speak("Some shit")
+#playsound(speak("Some shit"))
 
 data = json.loads(open('../backend/intents.json').read())
+states_and_cities = json.loads(open('../backend/states_and_cities.json').read())
+
+@eel.expose
+def read_question(text):
+    speech = speak(text)
+    playsound(speech)
 
 @eel.expose
 def get_num():
@@ -49,6 +56,11 @@ def get_question(val):
             options = data['root'][val]['options']
             response = "checkbox:" + name + "/" + ",".join(options)
     return [question, response]
+
+@eel.expose
+def get_cities(state):
+    cities = states_and_cities[state]
+    return cities
 
 eel.init('web')
 eel.start('main.html', size=(1000, 600))

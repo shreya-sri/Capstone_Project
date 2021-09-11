@@ -10,8 +10,6 @@ Created on Mon Jul 19 11:24:15 2021
 import os
 from google.cloud import texttospeech
 from google.cloud import texttospeech_v1
-from playsound import playsound
-
 
 os.environ['GOOGLE_APPLICATION_CREDENTIALS']="key.json"
 
@@ -43,12 +41,13 @@ def speak(text):
     )
     
     #write audio to file
-    f=open("output.mp3", "wb")
-    f.write(response.audio_content)
-    f.close()
+    with open("output.mp3", "wb") as f:
+        f.write(response.audio_content)
     
     #play
-    playsound("output.mp3")
+    #playsound("output.mp3")
+
+    return "output.mp3"
     
     
 

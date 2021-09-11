@@ -6,20 +6,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/keyboard.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script type="text/javascript" src="/eel.js"></script>
     <script type="text/javascript" src="js/keyboard.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
     <script type="text/javascript" src="js/questions.js"></script>
-    <script type="text/javascript" src="/eel.js"></script>
 </head>
 
-<body onload="loadkeyboard(); read_question();">
+<body onload="read_question();">
     <form id="regForm">
-    <div class="tab show animated fadeInTop" id="0" style="display: block;">
+    <div class="tab animated fadeInTop" id="0">
         <h1 id="question" style="color: rgb(102, 252, 241); font-size: 50px; text-align: center;">Please enter your First name. This field is required.</h1>
         <input type="text" required="true" class="txtbox use-keyboard-input" id="response">
     </div>
@@ -49,7 +49,8 @@
     </div>
     <div class="tab animated fadeInTop" id="7">
         <h1 id="question" style="color: rgb(102, 252, 241); font-size: 50px; text-align: center;">Please select your Gender.</h1>
-        <select name="Gender" required="true" class="dropdown">
+        <select name="Gender" required="true" class="dropdown" id="response">
+            <option value=""></option>
             <option value="Other" style="color: rgb(0, 0, 0); font-size: 20px; text-align: center;">Other</option>
             <option value="Male" style="color: rgb(0, 0, 0); font-size: 20px; text-align: center;">Male</option>
             <option value="Female" style="color: rgb(0, 0, 0); font-size: 20px; text-align: center;">Female</option>
@@ -58,7 +59,7 @@
         </select>
     </div>
     <div class="tab animated fadeInTop" id="8">
-        <h1 id="question" style="color: rgb(102, 252, 241); font-size: 50px; text-align: center;">Please enter your Mobile No.. This field is required.</h1>
+        <h1 id="question" style="color: rgb(102, 252, 241); font-size: 50px; text-align: center;">Please enter your Mobile Number. This field is required.</h1>
         <input type="number" required="true" class="txtbox use-keyboard-input" id="response">
     </div>
     <div class="tab animated fadeInTop" id="9">
@@ -71,7 +72,8 @@
     </div>
     <div class="tab animated fadeInTop" id="11">
         <h1 id="question" style="color: rgb(102, 252, 241); font-size: 50px; text-align: center;">Please select your Category.</h1>
-        <select name="Category" required="true" class="dropdown">
+        <select name="Category" required="true" class="dropdown" id="response">
+            <option value=""></option>
             <option value="General" style="color: rgb(0, 0, 0); font-size: 20px; text-align: center;">General</option>
             <option value="SC" style="color: rgb(0, 0, 0); font-size: 20px; text-align: center;">SC</option>
             <option value="ST" style="color: rgb(0, 0, 0); font-size: 20px; text-align: center;">ST</option>
@@ -81,7 +83,8 @@
     </div>
     <div class="tab animated fadeInTop" id="12">
         <h1 id="question" style="color: rgb(102, 252, 241); font-size: 50px; text-align: center;">Please select your Relation with PwD.</h1>
-        <select name="Relation with PwD" required="true" class="dropdown">
+        <select name="Relation with PwD" required="true" class="dropdown" id="response">
+            <option value=""></option>
             <option value="self" style="color: rgb(0, 0, 0); font-size: 20px; text-align: center;">self</option>
             <option value="Family member" style="color: rgb(0, 0, 0); font-size: 20px; text-align: center;">Family member</option>
             <option value="Other" style="color: rgb(0, 0, 0); font-size: 20px; text-align: center;">Other</option>
@@ -89,19 +92,20 @@
     </div>
     <div class="tab animated fadeInTop" id="13">
         <h1 id="question" style="color: rgb(102, 252, 241); font-size: 50px; text-align: center;">Please Upload your Photo. This field is required.</h1>
-        <video class="p" id="response" style="color: rgb(102, 252, 241); font-size: 60px; text-align: center;">Camera</video>
+        <video  class="video" id="response" width="480" height="360" autoplay></video>
     </div>
-    <div class="tab animated fadeInTop" id="14">
+    <div class="tab animated fadeInTop" id="14" onload="py_video();">
         <h1 id="question" style="color: rgb(102, 252, 241); font-size: 50px; text-align: center;">Please Upload your Signature. This field is required.</h1>
-        <video class="p" id="response" style="color: rgb(102, 252, 241); font-size: 60px; text-align: center;">Camera</video>
+        <video  class="video" id="response" width="480" height="360" autoplay></video>
     </div>
-    <div class="tab animated fadeInTop" id="15">
+    <div class="tab animated fadeInTop show" id="15" style="display: block;">
         <h1 id="question" style="color: rgb(102, 252, 241); font-size: 50px; text-align: center;">Please Enter your Address.</h1>
         <textarea class="txtbox use-keyboard-input" id="response" style="height: 200px;"></textarea>
     </div>
     <div class="tab animated fadeInTop" id="16">
         <h1 id="question" style="color: rgb(102, 252, 241); font-size: 50px; text-align: center;">Please select your State.</h1>
-        <select name="State" required="true" class="dropdown">
+        <select name="State" required="true" class="dropdown" id="response">
+            <option value=""></option>
             <option value="Andaman and Nicobar Islands" style="color: rgb(0, 0, 0); font-size: 20px; text-align: center;">Andaman and Nicobar Islands</option>
             <option value="Andhra Pradesh" style="color: rgb(0, 0, 0); font-size: 20px; text-align: center;">Andhra Pradesh</option>
             <option value="Arunachal Pradesh" style="color: rgb(0, 0, 0); font-size: 20px; text-align: center;">Arunachal Pradesh</option>
@@ -142,8 +146,8 @@
     </div>
     <div class="tab animated fadeInTop" id="17">
         <h1 id="question" style="color: rgb(102, 252, 241); font-size: 50px; text-align: center;">Please select your City.</h1>
-        <select name="City" required="true" class="dropdown">
-            <option value="Bengaluru" style="color: rgb(0, 0, 0); font-size: 20px; text-align: center;">Bengaluru</option>
+        <select name="City" required="true" class="dropdown" id="response">
+            <option value=""></option>
         </select>
     </div>
     <div class="tab animated fadeInTop" id="18">
@@ -155,7 +159,8 @@
     </div>
     <div class="tab animated fadeInTop" id="20">
         <h1 id="question" style="color: rgb(102, 252, 241); font-size: 50px; text-align: center;">Please select your Choice of Address Proof.</h1>
-        <select name="Address Proof" required="true" class="dropdown">
+        <select name="Address Proof" required="true" class="dropdown" id="response">
+            <option value=""></option>
             <option value="Aadhar Card" style="color: rgb(0, 0, 0); font-size: 20px; text-align: center;">Aadhar Card</option>
             <option value="Drivers License" style="color: rgb(0, 0, 0); font-size: 20px; text-align: center;">Drivers License</option>
             <option value="Pan Card" style="color: rgb(0, 0, 0); font-size: 20px; text-align: center;">Pan Card</option>
@@ -163,7 +168,7 @@
     </div>
     <div class="tab animated fadeInTop" id="21">
         <h1 id="question" style="color: rgb(102, 252, 241); font-size: 50px; text-align: center;">Please Upload your Address Proof. This field is required.</h1>
-        <video class="p" id="response" style="color: rgb(102, 252, 241); font-size: 60px; text-align: center;">Camera</video>
+        <video  class="video" id="response" width="480" height="360" autoplay></video>
     </div>
     <div class="tab animated fadeInTop" id="22">
         <h1 id="question" style="color: rgb(102, 252, 241); font-size: 50px; text-align: center;">Do you have a disability Certificate? Select one of the following.</h1>
@@ -180,8 +185,154 @@
             <input type="checkbox" name="Disability type" value="Blindness" required="true">
         </label>
         <label class="label-checkbox" style="color: rgb(255, 255, 255); font-size: 20px; text-align: center;">Low-Vision
-            <input type="checkbox" name="Disability type" value="Low-Vision" required="true"></label><label class="label-checkbox" style="color: rgb(255, 255, 255); font-size: 20px; text-align: center;">Leprosy Cured Persons<input type="checkbox" name="Disability type" value="Leprosy Cured Persons" required="true"></label><label class="label-checkbox" style="color: rgb(255, 255, 255); font-size: 20px; text-align: center;">Hearing Impairment<input type="checkbox" name="Disability type" value="Hearing Impairment" required="true"></label><label class="label-checkbox" style="color: rgb(255, 255, 255); font-size: 20px; text-align: center;">Locomotor Disability<input type="checkbox" name="Disability type" value="Locomotor Disability" required="true"></label><label class="label-checkbox" style="color: rgb(255, 255, 255); font-size: 20px; text-align: center;">Dwarfism<input type="checkbox" name="Disability type" value="Dwarfism" required="true"></label><label class="label-checkbox" style="color: rgb(255, 255, 255); font-size: 20px; text-align: center;">Intellectual Disability<input type="checkbox" name="Disability type" value="Intellectual Disability" required="true"></label><label class="label-checkbox" style="color: rgb(255, 255, 255); font-size: 20px; text-align: center;">Mental Illness<input type="checkbox" name="Disability type" value="Mental Illness" required="true"></label><label class="label-checkbox" style="color: rgb(255, 255, 255); font-size: 20px; text-align: center;">Autism Spectrum Disorder<input type="checkbox" name="Disability type" value="Autism Spectrum Disorder" required="true"></label><label class="label-checkbox" style="color: rgb(255, 255, 255); font-size: 20px; text-align: center;">Cerebral Palsy<input type="checkbox" name="Disability type" value="Cerebral Palsy" required="true"></label><label class="label-checkbox" style="color: rgb(255, 255, 255); font-size: 20px; text-align: center;">Muscular Dystrophy<input type="checkbox" name="Disability type" value="Muscular Dystrophy" required="true"></label><label class="label-checkbox" style="color: rgb(255, 255, 255); font-size: 20px; text-align: center;">Chronic Neurological Conditions<input type="checkbox" name="Disability type" value="Chronic Neurological Conditions" required="true"></label><label class="label-checkbox" style="color: rgb(255, 255, 255); font-size: 20px; text-align: center;">Specific Learning Disabilities<input type="checkbox" name="Disability type" value="Specific Learning Disabilities" required="true"></label><label class="label-checkbox" style="color: rgb(255, 255, 255); font-size: 20px; text-align: center;">Multiple Scelrosis<input type="checkbox" name="Disability type" value="Multiple Scelrosis" required="true"></label><label class="label-checkbox" style="color: rgb(255, 255, 255); font-size: 20px; text-align: center;">Speech and Language Disability<input type="checkbox" name="Disability type" value="Speech and Language Disability" required="true"></label><label class="label-checkbox" style="color: rgb(255, 255, 255); font-size: 20px; text-align: center;">Thalassemia<input type="checkbox" name="Disability type" value="Thalassemia" required="true"></label><label class="label-checkbox" style="color: rgb(255, 255, 255); font-size: 20px; text-align: center;">Hemophilia<input type="checkbox" name="Disability type" value="Hemophilia" required="true"></label><label class="label-checkbox" style="color: rgb(255, 255, 255); font-size: 20px; text-align: center;">Sickle Cell Disease<input type="checkbox" name="Disability type" value="Sickle Cell Disease" required="true"></label><label class="label-checkbox" style="color: rgb(255, 255, 255); font-size: 20px; text-align: center;">Multiple Disabilities including Deaf-Blindness<input type="checkbox" name="Disability type" value="Multiple Disabilities including Deaf-Blindness" required="true"></label><label class="label-checkbox" style="color: rgb(255, 255, 255); font-size: 20px; text-align: center;">Acid Attack Survivors<input type="checkbox" name="Disability type" value="Acid Attack Survivors" required="true"></label><label class="label-checkbox" style="color: rgb(255, 255, 255); font-size: 20px; text-align: center;">Parkinson's Disease<input type="checkbox" name="Disability type" value="Parkinson&#39;s Disease" required="true"></label></div><div class="tab animated fadeInTop" id="24"><h1 id="question" style="color: rgb(102, 252, 241); font-size: 50px; text-align: center;">Please Select the Onset of your disability. Select one of the following.</h1><label class="label-radio" style="color: rgb(255, 255, 255); font-size: 20px; text-align: center;">Disability by Birth<input type="radio" name="Onset of disability" value="Disability by Birth" required="true"></label><label class="label-radio" style="color: rgb(255, 255, 255); font-size: 20px; text-align: center;">Disability Later on in life<input type="radio" name="Onset of disability" value="Disability Later on in life" required="true"></label></div><div class="tab animated fadeInTop" id="25"><h1 id="question" style="color: rgb(102, 252, 241); font-size: 50px; text-align: center;">Please enter the Onset of your disability (if not at birth).</h1><input type="text" class="txtbox use-keyboard-input" id="response"></div><div class="tab animated fadeInTop" id="26"><h1 id="question" style="color: rgb(102, 252, 241); font-size: 50px; text-align: center;">Please enter the Hospital Treating the Disability (if any).</h1><input type="text" class="txtbox use-keyboard-input" id="response"></div><div class="tab animated fadeInTop" id="27"><h1 id="question" style="color: rgb(102, 252, 241); font-size: 50px; text-align: center;">Please Enter your Pension Card Number (if applicable).</h1><input type="number" class="txtbox use-keyboard-input" id="response"></div><div class="tab animated fadeInTop" id="28"><h1 id="question" style="color: rgb(102, 252, 241); font-size: 50px; text-align: center;">Please select the cause of Disability.</h1><select name="Cause of disability" required="true" class="dropdown"><option value="Accident" style="color: rgb(0, 0, 0); font-size: 20px; text-align: center;">Accident</option><option value="Diseases" style="color: rgb(0, 0, 0); font-size: 20px; text-align: center;">Diseases</option><option value="Infections" style="color: rgb(0, 0, 0); font-size: 20px; text-align: center;">Infections</option><option value="Hereditary" style="color: rgb(0, 0, 0); font-size: 20px; text-align: center;">Hereditary</option><option value="Congenital" style="color: rgb(0, 0, 0); font-size: 20px; text-align: center;">Congenital</option><option value="Medicine" style="color: rgb(0, 0, 0); font-size: 20px; text-align: center;">Medicine</option></select></div><div class="tab animated fadeInTop" id="29"><h1 id="question" style="color: rgb(102, 252, 241); font-size: 50px; text-align: center;">Please select your Employment Status.</h1><select name="Employment status" required="true" class="dropdown"><option value="Employed" style="color: rgb(0, 0, 0); font-size: 20px; text-align: center;">Employed</option><option value="Unemployed" style="color: rgb(0, 0, 0); font-size: 20px; text-align: center;">Unemployed</option></select></div><div class="tab animated fadeInTop" id="30"><h1 id="question" style="color: rgb(102, 252, 241); font-size: 50px; text-align: center;">Please select your Occupation.</h1><select name="Occupation" required="true" class="dropdown"><option value="Agriculture" style="color: rgb(0, 0, 0); font-size: 20px; text-align: center;">Agriculture</option><option value="Professional and Technical" style="color: rgb(0, 0, 0); font-size: 20px; text-align: center;">Professional and Technical</option><option value="Govt. Servant" style="color: rgb(0, 0, 0); font-size: 20px; text-align: center;">Govt. Servant</option><option value="Clerical and Bank" style="color: rgb(0, 0, 0); font-size: 20px; text-align: center;">Clerical and Bank</option><option value="Other" style="color: rgb(0, 0, 0); font-size: 20px; text-align: center;">Other</option></select></div><div class="tab animated fadeInTop" id="31"><h1 id="question" style="color: rgb(102, 252, 241); font-size: 50px; text-align: center;">Please select your Poverty Status.</h1><select name="Poverty Status" required="true" class="dropdown"><option value="Above Poverty Line" style="color: rgb(0, 0, 0); font-size: 20px; text-align: center;">Above Poverty Line</option><option value="Below Poverty Line" style="color: rgb(0, 0, 0); font-size: 20px; text-align: center;">Below Poverty Line</option></select></div><div class="tab animated fadeInTop" id="32"><h1 id="question" style="color: rgb(102, 252, 241); font-size: 50px; text-align: center;">Please select your Annual Income.</h1><select name="Annual Income" required="true" class="dropdown"><option value="less than two lakh" style="color: rgb(0, 0, 0); font-size: 20px; text-align: center;">less than two lakh</option><option value="two to five lakh" style="color: rgb(0, 0, 0); font-size: 20px; text-align: center;">two to five lakh</option><option value="above five lakh" style="color: rgb(0, 0, 0); font-size: 20px; text-align: center;">above five lakh</option></select></div><div class="tab animated fadeInTop" id="33"><h1 id="question" style="color: rgb(102, 252, 241); font-size: 50px; text-align: center;">Please select your Choice of ID Proof.</h1><select name="ID Proof" required="true" class="dropdown"><option value="Aadhar Card" style="color: rgb(0, 0, 0); font-size: 20px; text-align: center;">Aadhar Card</option><option value="Drivers License" style="color: rgb(0, 0, 0); font-size: 20px; text-align: center;">Drivers License</option><option value="Pan Card" style="color: rgb(0, 0, 0); font-size: 20px; text-align: center;">Pan Card</option></select></div><div class="tab animated fadeInTop" id="34"><h1 id="question" style="color: rgb(102, 252, 241); font-size: 50px; text-align: center;">Please Upload your ID Proof. This field is required.</h1><video class="p" id="response" style="color: rgb(102, 252, 241); font-size: 60px; text-align: center;">Camera</video></div><div class="tab animated fadeInTop" id="35"><h1 id="question" style="color: rgb(102, 252, 241); font-size: 50px; text-align: center;">Please Enter your ID Proof Number. This field is required.</h1><input type="number" required="true" class="txtbox use-keyboard-input" id="response"></div><div class="tab animated fadeInTop" id="36"><h1 id="question" style="color: rgb(102, 252, 241); font-size: 50px; text-align: center;">Thank you!</h1></div>
-    <button class="prev-button" type="submit" onclick="nextPrev(-1);">Previous</button>
+            <input type="checkbox" name="Disability type" value="Low-Vision" required="true">
+        </label>
+        <label class="label-checkbox" style="color: rgb(255, 255, 255); font-size: 20px; text-align: center;">Leprosy Cured Persons
+            <input type="checkbox" name="Disability type" value="Leprosy Cured Persons" required="true">
+        </label>
+        <label class="label-checkbox" style="color: rgb(255, 255, 255); font-size: 20px; text-align: center;">Hearing Impairment
+            <input type="checkbox" name="Disability type" value="Hearing Impairment" required="true">
+        </label>
+        <label class="label-checkbox" style="color: rgb(255, 255, 255); font-size: 20px; text-align: center;">Locomotor Disability
+            <input type="checkbox" name="Disability type" value="Locomotor Disability" required="true">
+        </label>
+        <label class="label-checkbox" style="color: rgb(255, 255, 255); font-size: 20px; text-align: center;">Dwarfism
+            <input type="checkbox" name="Disability type" value="Dwarfism" required="true">
+        </label>
+        <label class="label-checkbox" style="color: rgb(255, 255, 255); font-size: 20px; text-align: center;">Intellectual Disability
+            <input type="checkbox" name="Disability type" value="Intellectual Disability" required="true">
+        </label>
+        <label class="label-checkbox" style="color: rgb(255, 255, 255); font-size: 20px; text-align: center;">Mental Illness
+            <input type="checkbox" name="Disability type" value="Mental Illness" required="true">
+        </label>
+        <label class="label-checkbox" style="color: rgb(255, 255, 255); font-size: 20px; text-align: center;">Autism Spectrum Disorder
+            <input type="checkbox" name="Disability type" value="Autism Spectrum Disorder" required="true">
+        </label>
+        <label class="label-checkbox" style="color: rgb(255, 255, 255); font-size: 20px; text-align: center;">Cerebral Palsy
+            <input type="checkbox" name="Disability type" value="Cerebral Palsy" required="true">
+        </label>
+        <label class="label-checkbox" style="color: rgb(255, 255, 255); font-size: 20px; text-align: center;">Muscular Dystrophy
+            <input type="checkbox" name="Disability type" value="Muscular Dystrophy" required="true">
+        </label>
+        <label class="label-checkbox" style="color: rgb(255, 255, 255); font-size: 20px; text-align: center;">Chronic Neurological Conditions
+            <input type="checkbox" name="Disability type" value="Chronic Neurological Conditions" required="true">
+        </label>
+        <label class="label-checkbox" style="color: rgb(255, 255, 255); font-size: 20px; text-align: center;">Specific Learning Disabilities
+            <input type="checkbox" name="Disability type" value="Specific Learning Disabilities" required="true">
+        </label>
+        <label class="label-checkbox" style="color: rgb(255, 255, 255); font-size: 20px; text-align: center;">Multiple Scelrosis
+            <input type="checkbox" name="Disability type" value="Multiple Scelrosis" required="true">
+        </label>
+        <label class="label-checkbox" style="color: rgb(255, 255, 255); font-size: 20px; text-align: center;">Speech and Language Disability
+            <input type="checkbox" name="Disability type" value="Speech and Language Disability" required="true">
+        </label>
+        <label class="label-checkbox" style="color: rgb(255, 255, 255); font-size: 20px; text-align: center;">Thalassemia
+            <input type="checkbox" name="Disability type" value="Thalassemia" required="true">
+        </label>
+        <label class="label-checkbox" style="color: rgb(255, 255, 255); font-size: 20px; text-align: center;">Hemophilia
+            <input type="checkbox" name="Disability type" value="Hemophilia" required="true">
+        </label>
+        <label class="label-checkbox" style="color: rgb(255, 255, 255); font-size: 20px; text-align: center;">Sickle Cell Disease
+            <input type="checkbox" name="Disability type" value="Sickle Cell Disease" required="true">
+        </label>
+        <label class="label-checkbox" style="color: rgb(255, 255, 255); font-size: 20px; text-align: center;">Multiple Disabilities including Deaf-Blindness
+            <input type="checkbox" name="Disability type" value="Multiple Disabilities including Deaf-Blindness" required="true">
+        </label>
+        <label class="label-checkbox" style="color: rgb(255, 255, 255); font-size: 20px; text-align: center;">Acid Attack Survivors
+            <input type="checkbox" name="Disability type" value="Acid Attack Survivors" required="true">
+        </label>
+        <label class="label-checkbox" style="color: rgb(255, 255, 255); font-size: 20px; text-align: center;">Parkinson's Disease
+            <input type="checkbox" name="Disability type" value="Parkinsons Disease" required="true">
+        </label>
+    </div>
+    <div class="tab animated fadeInTop" id="24">
+        <h1 id="question" style="color: rgb(102, 252, 241); font-size: 50px; text-align: center;">Please Select the Onset of your disability. Select one of the following.</h1>
+        <label class="label-radio" style="color: rgb(255, 255, 255); font-size: 20px; text-align: center;">Disability by Birth
+            <input type="radio" name="Onset of disability" value="Disability by Birth" required="true">
+        </label>
+        <label class="label-radio" style="color: rgb(255, 255, 255); font-size: 20px; text-align: center;">Disability Later on in life
+            <input type="radio" name="Onset of disability" value="Disability Later on in life" required="true">
+        </label>
+    </div>
+    <div class="tab animated fadeInTop" id="25"><h1 id="question" style="color: rgb(102, 252, 241); font-size: 50px; text-align: center;">Please enter the Onset of your disability (if not at birth).</h1>
+        <input type="text" class="txtbox use-keyboard-input" id="response">
+    </div>
+    <div class="tab animated fadeInTop" id="26">
+        <h1 id="question" style="color: rgb(102, 252, 241); font-size: 50px; text-align: center;">Please enter the Hospital Treating the Disability (if any).</h1>
+        <input type="text" class="txtbox use-keyboard-input" id="response">
+    </div>
+    <div class="tab animated fadeInTop" id="27">
+        <h1 id="question" style="color: rgb(102, 252, 241); font-size: 50px; text-align: center;">Please Enter your Pension Card Number (if applicable).</h1>
+        <input type="number" class="txtbox use-keyboard-input" id="response">
+    </div>
+    <div class="tab animated fadeInTop" id="28">
+        <h1 id="question" style="color: rgb(102, 252, 241); font-size: 50px; text-align: center;">Please select the cause of Disability.</h1>
+        <select name="Cause of disability" required="true" class="dropdown" id="response">
+            <option value=""></option>
+            <option value="Accident" style="color: rgb(0, 0, 0); font-size: 20px; text-align: center;">Accident</option>
+            <option value="Diseases" style="color: rgb(0, 0, 0); font-size: 20px; text-align: center;">Diseases</option>
+            <option value="Infections" style="color: rgb(0, 0, 0); font-size: 20px; text-align: center;">Infections</option>
+            <option value="Hereditary" style="color: rgb(0, 0, 0); font-size: 20px; text-align: center;">Hereditary</option>
+            <option value="Congenital" style="color: rgb(0, 0, 0); font-size: 20px; text-align: center;">Congenital</option>
+            <option value="Medicine" style="color: rgb(0, 0, 0); font-size: 20px; text-align: center;">Medicine</option>
+        </select>
+    </div>
+    <div class="tab animated fadeInTop" id="29">
+        <h1 id="question" style="color: rgb(102, 252, 241); font-size: 50px; text-align: center;">Please select your Employment Status.</h1>
+        <select name="Employment status" required="true" class="dropdown" id="response">
+            <option value="Employed" style="color: rgb(0, 0, 0); font-size: 20px; text-align: center;">Employed</option>
+            <option value="Unemployed" style="color: rgb(0, 0, 0); font-size: 20px; text-align: center;">Unemployed</option>
+        </select>
+    </div>
+    <div class="tab animated fadeInTop" id="30">
+        <h1 id="question" style="color: rgb(102, 252, 241); font-size: 50px; text-align: center;">Please select your Occupation.</h1>
+        <select name="Occupation" required="true" class="dropdown" id="response">
+            <option value=""></option>
+            <option value="Agriculture" style="color: rgb(0, 0, 0); font-size: 20px; text-align: center;">Agriculture</option>
+            <option value="Professional and Technical" style="color: rgb(0, 0, 0); font-size: 20px; text-align: center;">Professional and Technical</option>
+            <option value="Govt. Servant" style="color: rgb(0, 0, 0); font-size: 20px; text-align: center;">Govt. Servant</option>
+            <option value="Clerical and Bank" style="color: rgb(0, 0, 0); font-size: 20px; text-align: center;">Clerical and Bank</option>
+            <option value="Other" style="color: rgb(0, 0, 0); font-size: 20px; text-align: center;">Other</option>
+        </select>
+    </div>
+    <div class="tab animated fadeInTop" id="31">
+        <h1 id="question" style="color: rgb(102, 252, 241); font-size: 50px; text-align: center;">Please select your Poverty Status.</h1>
+        <select name="Poverty Status" required="true" class="dropdown" id="response">
+            <option value=""></option>
+            <option value="Above Poverty Line" style="color: rgb(0, 0, 0); font-size: 20px; text-align: center;">Above Poverty Line</option>
+            <option value="Below Poverty Line" style="color: rgb(0, 0, 0); font-size: 20px; text-align: center;">Below Poverty Line</option>
+        </select>
+    </div>
+    <div class="tab animated fadeInTop" id="32">
+        <h1 id="question" style="color: rgb(102, 252, 241); font-size: 50px; text-align: center;">Please select your Annual Income.</h1>
+        <select name="Annual Income" required="true" class="dropdown" id="response">
+            <option value=""></option>
+            <option value="less than two lakh" style="color: rgb(0, 0, 0); font-size: 20px; text-align: center;">less than two lakh</option>
+            <option value="two to five lakh" style="color: rgb(0, 0, 0); font-size: 20px; text-align: center;">two to five lakh</option>
+            <option value="above five lakh" style="color: rgb(0, 0, 0); font-size: 20px; text-align: center;">above five lakh</option>
+        </select>
+    </div>
+    <div class="tab animated fadeInTop" id="33">
+        <h1 id="question" style="color: rgb(102, 252, 241); font-size: 50px; text-align: center;">Please select your Choice of ID Proof.</h1>
+        <select name="ID Proof" required="true" class="dropdown" id="response">
+            <option value=""></option>
+            <option value="Aadhar Card" style="color: rgb(0, 0, 0); font-size: 20px; text-align: center;">Aadhar Card</option>
+            <option value="Drivers License" style="color: rgb(0, 0, 0); font-size: 20px; text-align: center;">Drivers License</option>
+            <option value="Pan Card" style="color: rgb(0, 0, 0); font-size: 20px; text-align: center;">Pan Card</option>
+        </select>
+    </div>
+    <div class="tab animated fadeInTop" id="34">
+        <h1 id="question" style="color: rgb(102, 252, 241); font-size: 50px; text-align: center;">Please Upload your ID Proof. This field is required.</h1>
+        <video  class="video" id="response" width="480" height="360" autoplay></video>
+    </div>
+    <div class="tab animated fadeInTop" id="35">
+        <h1 id="question" style="color: rgb(102, 252, 241); font-size: 50px; text-align: center;">Please Enter your ID Proof Number. This field is required.</h1>
+        <input type="number" required="true" class="txtbox use-keyboard-input" id="response">
+    </div>
+    <div class="tab animated fadeInTop" id="36">
+        <h1 id="question" style="color: rgb(102, 252, 241); font-size: 50px; text-align: center;">Thank you!</h1>
+    </div>
+    <button class="prev-button" type="submit" style="display: none;" onclick="nextPrev(-1);">Previous</button>
     <button class="next-button" type="submit" onclick="nextPrev(1);">Next</button>
 </form>
 </body>

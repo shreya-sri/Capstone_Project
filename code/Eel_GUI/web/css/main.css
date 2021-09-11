@@ -134,7 +134,7 @@ a:active {
 }
 
 .tab {
-    margin-top: 10%;
+    margin-top: 5%;
     display: none;
   }
 
@@ -236,4 +236,6 @@ a:active {
 
 .video {
     align-content: center;
+    margin-left: 25%;
+    width: 50%;
 }
