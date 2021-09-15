@@ -42,6 +42,12 @@ function img2_hover() {
     }, false );
 }
 
+function enable_voice_yes() {
+    localStorage.setItem("activate_voice", "yes");
+}
 
+function enable_voice_no() {
+    localStorage.setItem("activate_voice", "no");
+}
 
 

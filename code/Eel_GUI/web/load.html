@@ -3,27 +3,37 @@
 
 <head>
     <title>Welcome!</title>
-    <meta charset="UTF-8">
+     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link  rel="preconnect" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300&display=swap">
+    <link rel="preconnect" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300&display=swap">
     <script type="text/javascript" src="js/main.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script type="text/javascript" src="/eel.js"></script>
 </head>
 
-<body>
+<body onload="eel.CreateQuestionsPage();">
+
     <div class="div1 animated fadeInTop">
-        <h1 style="color: #66fcf1; font-size: 60px; text-align: center;">Please wait while the page loads</h1>
+        <h1 style="color: #66fcf1; font-size: 3.75vw; text-align: center;">Please wait while the page loads</h1>
+
+        <script>
+            var item = localStorage.getItem("activate_voice");
+            if (item == "yes") {
+                var question = document.getElementsByTagName("h1");
+                for (var i=0; i<question.length; i++) {
+                    eel.ReadQuestion(question[i].innerHTML)();
+                }
+            }
+        </script>
+    
         <div class="prgoress_container" style="text-align: center;">
             <div class="progress_bar" id="myBar" onload="move()">
-                <p style=" font-weight: bold; font-size: 20px; text-align: center;"></p>
+                <p style="font-weight: bold; font-size: 1.25vw; text-align: center;"></p>
             </div>
         </div>
-        <a href=questions1.html><button class ="continue" id="c_btn">Continue</button></a>
+        <a href=questions.html><button class ="continue" style="font-size: 1.5625vw;" id="c_btn">Continue</button></a>
     </div>
 
 </body>

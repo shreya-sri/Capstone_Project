@@ -3,9 +3,9 @@
     left: 0;
     bottom: 0;
     width: 100%;
-    padding: 5px 0;
+    padding: 0.3125vw 0;
     background-color: #1f2833;
-    box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 3.125vw rgba(0, 0, 0, 0.5);
     user-select: none;
     transition: bottom 0.4s;
   }
@@ -16,15 +16,15 @@
     text-align: center;
   }
   .keyboard__key {
-    height: 45px;
+    height: 2.8125vw;
     width: 6%;
-    max-width: 90px;
-    margin: 3px;
-    border-radius: 4px;
+    max-width: 5.625vw;
+    margin: 0.1875vw;
+    border-radius: 0.25vw;
     border: none;
     background: rgba(255, 255, 255, 0.2);
     color: white;
-    font-size: 1.05rem;
+    font-size: 1.05vw;
     outline: none;
     cursor: pointer;
     display: inline-flex;
@@ -43,15 +43,15 @@
   }
   .keyboard__key--extra-wide {
     width: 36%;
-    max-width: 500px;
+    max-width: 31.25vw;
   }
   .keyboard__key--activatable::after {
     content: "";
-    top: 10px;
-    right: 10px;
+    top: 0.625vw;
+    right: 0.625vw;
     position: absolute;
-    width: 8px;
-    height: 8px;
+    width: 0.5vw;
+    height: 0.5vw;
     background: rgba(0, 0, 0, 0.4);
     border-radius: 50%;
   }
