@@ -10,18 +10,18 @@ body {
 }
 
 .div1 {
-    padding-top: 40px;
-    padding-bottom: 40px;  
+    padding-top: 2.5vw;
+    padding-bottom: 2.5vw;
 }
 
 .voice {
     background-color: #1f2833;
-    height: 250px;
-    width: 200px;
-    margin-top: 10px;
-    padding-top:20px;
+    height: 15.625vw;
+    width: 12.5vw;
+    margin-top: 0.625vw;
+    padding-top: 1.25vw;
     text-align: center;
-    border: 2px solid;
+    border: 0.125vw solid;
     border-radius: 10%;
     border-color: #45a29e;
     transition: margin 0.5s ease-out;
@@ -34,15 +34,15 @@ body {
     cursor: pointer;
     background-color: #66fcf1;
     color: #000000;
-    margin-top: 0px;
-    box-shadow: 0 8px 16px 0 #696969;
+    margin-top: 0;
+    box-shadow: 0 0.5vw 1vw 0 #696969;
 
 }
 
 @-webkit-keyframes fadeInTop {
     0% {
         opacity: 0;
-        -webkit-transform: translateY(60px);
+        -webkit-transform: translateY(3.75vw);
     }
     100% {
         opacity: 1;
@@ -53,7 +53,7 @@ body {
 @keyframes fadeInTop {
     0% {
         opacity: 0;
-        transform: translateY(60px);
+        transform: translateY(3.75vw);
     }
     100% {
         opacity: 1;
@@ -92,13 +92,13 @@ a:active {
 
 .prgoress_container{
 	background-color:#ffffff;
-	border-radius: 10px;	
+	border-radius: 0.625vw;	
     border-color: #45a29e;
-	height: 75px;
+	height: 4.6875vw;
 	overflow:hidden;
     margin-left: 20%;
-	margin-top: 100px;
-    margin-bottom: 15px;
+	margin-top: 6.25vw;
+    margin-bottom:  0.9375vw;
     width: 60%;
 }
 
@@ -113,18 +113,17 @@ a:active {
 .continue {
     background-color: #1f2833;
     width: 15%;
-    margin-top: 100px;
-    border: 2px solid;
+    margin-top: 6.25vw;
+    border: 0.125vw solid;
     border-color: #45a29e;
-    border-radius: 20px;
+    border-radius: 1.25vw;
     color: white;
-    padding: 15px 32px;
+    padding: 0.9375vw 2vw;
     text-align: center;
     display: none;
-    font-size: 25px;
     font-family: 'IBM Plex Mono', monospace;
     margin-left: 42.5%;
-    min-width: 120px;
+    min-width: 7.5vw;
   }
 
 .continue:hover, .next-button:hover, .prev-button:hover {
@@ -134,7 +133,7 @@ a:active {
 }
 
 .tab {
-    margin-top: 10%;
+    margin-top: 5%;
     display: none;
   }
 
@@ -143,97 +142,174 @@ a:active {
 }
 
 .txtbox {
-    border: 2px solid;
-    border-radius: 10px;
+    border: 0.125vw solid;
+    border-radius: 0.625vw;
     border-color: #45a29e;
-	height: 75px;
+	height: 4.6875vw;
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 20px;
+    font-size: 1.25vw;
 	overflow: hidden;
     margin-left: 20%;
-	margin-top: 75px;
-    margin-bottom: 15px;
+	margin-top: 4.6875vw;
+    margin-bottom: 0.9375vw;
     width: 60%;
 }
 
 .dropdown {
-    border: 2px solid;
-    border-radius: 10px;
+    border: 0.125vw solid;
+    border-radius: 0.625vw;
     border-color: #45a29e;
-	height: 75px;
+	height: 4.6875vw;
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 20px;
+    font-size: 1.25vw;
 	overflow: hidden;
     margin-left: 20%;
-	margin-top: 75px;
-    margin-bottom: 15px;
+	margin-top: 4.6875vw;
+    margin-bottom: 0.9375vw;
     width: 60%;
 }
 
 .label-radio {
     display: block;
-    position: relative;
-    padding-left: 40%;
-    width: 20%;
-    cursor: pointer;
-    font-size: 22px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+    float: left;
+    padding-left: 27%;
 }
 
-.container input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
+input[type="radio"] {
+    width: 2.1875vw;
+    height: 2.1875vw;
+    margin-right: 0.9375vw;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 50%;
+    border: 0.1875vw solid #66fcf1;
+    transition: 0.2s all linear;
+
 }
 
-.hiddenradio [type=radio] + img {
+input[type="radio"]:hover {
     cursor: pointer;
-  }
-  
-  /* CHECKED STYLES */
-  .hiddenradio [type=radio]:checked + img {
-    outline: 2px solid #f00;
-  }
+}
+
+input[type="radio"]:checked {
+    border: 0.625vw solid #66fcf1;;
+}
+
+.label-checkbox {
+    float: left;
+    width: 45%;
+    padding-left: 5%;
+    font-size: 2vw;
+    font-family: 'IBM Plex Mono', monospace;
+}
+
+input[type="checkbox"] {
+    width: 1.25vw;
+    height: 1.25vw;
+    margin-right: 0.9375vw;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: 0.125vw solid #66fcf1;
+    transition: 0.2s all linear;
+
+}
+
+input[type="checkbox"]:hover {
+    cursor: pointer;
+}
+
+input[type="checkbox"]:checked {
+    border: 0.625vw solid #66fcf1;;
+}
 
 .next-button {
     background-color: #1f2833;
     width: 15%;
-    margin-top: 100px;
-    border: 2px solid;
+    margin-top: 6.25vw;
+    border: 0.125vw solid;
     border-color: #45a29e;
-    border-radius: 20px;
+    border-radius: 1.25vw;
     color: white;
-    padding: 15px 32px;
+    padding: 0.9375vw 2vw;
     float: right;
-    font-size: 25px;
+    font-size: 1.5625vw;
     font-family: 'IBM Plex Mono', monospace;
     text-align: center;
     margin-right: 15%;    
-    min-width: 120px;
 }
 
 .prev-button {
     background-color: #1f2833;
     width: 15%;
-    margin-top: 100px;
-    border: 2px solid;
+    margin-top: 6.25vw;
+    border: 0.125vw solid;
     border-color: #45a29e;
-    border-radius: 20px;
+    border-radius: 1.25vw;
     color: white;
-    padding: 15px 32px;
+    padding: 0.9375vw 2vw;
     float: left;
-    font-size: 25px;
+    font-size: 1.5625vw;
     font-family: 'IBM Plex Mono', monospace;
     text-align: center;
     margin-left: 15%;    
-    min-width: 120px;
+    margin-right: 30%;
 }
 
 .video {
     align-content: center;
+    margin-left: 25%;
+    width: 50%;
+}
+
+.capture {
+    position: absolute;
+    top: 6vw;
+    left: 35vw;
+    margin: 0;
+    padding: 0.5vw 0.5vw 0.5vw 2vw;
+    background: rgba(242, 47, 70, 0.8);
+    color: #fff;
+    font-size: 1vw;
+    line-height: 1;
+}
+
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4);
+  }
+  
+.modal-content {
+    background-color: #1f2833;
+    border: 0.1875vw solid;
+    border-color: #45a29e;
+    border-radius: 1.25vw;
+    color: #ffffff;
+    margin: 15% auto; 
+    padding: 1.25vw; 
+    width: 50%; 
+    height: 25%;
+}
+  
+
+.close {
+    color: #45a29e;
+    float: right;
+    font-size: 1.75vw;
+    font-weight: bold;
+}
+  
+.close:hover, .close:focus {
+    color: #ffffff;
+    text-decoration: none;
+    cursor: pointer;
 }

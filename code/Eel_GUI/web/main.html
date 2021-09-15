@@ -10,27 +10,33 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300&display=swap">
     <script type="text/javascript" src="js/main.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script type="text/javascript" src="/eel.js"></script>
 </head>
 
 <body>
     <div class="div1 animated fadeInTop">
-        <h1 style="color: #66fcf1; font-size: 70px; text-align: center;">Welcome!</h1>
-        <h1 style="color: #66fcf1; font-size: 60px; text-align: center;">Would you like to use our voice assistant?</h1>
+        <h1 style="color: #66fcf1; font-size: 4.5vw; text-align: center;">Welcome!</h1>
+        <h1 style="color: #66fcf1; font-size: 3.75vw; text-align: center;">Would you like to use our voice assistant?</h1>
     </div>
 
+   <script>
+        var question = document.getElementsByTagName("h1");
+        for (var i=0; i<question.length; i++) {
+            eel.ReadQuestion(question[i].innerHTML)();
+        }
+    </script>
+
     <a href="load.html">
-        <div class="voice animated fadeInTop" id="voice_yes" style="float: left; margin-left:25%;" onmouseover="img1_hover()">
+        <div class="voice animated fadeInTop" id="voice_yes" style="float: left; margin-left:25%;" onmouseover="img1_hover();" onclick="enable_voice_yes();">
             <img src="images/speaker_white.png">
-            <p style="font-size: 25px;">Use voice assistant</p>
+            <p style="font-size: 1.5625vw;">Use voice assistant</p>
         </div>
     </a>
 
     <a href="load.html">
-        <div class="voice animated fadeInTop" id="voice_no" style="float:right; margin-right:25%;" onmouseover="img2_hover()">
+        <div class="voice animated fadeInTop" id="voice_no" style="float:right; margin-right:25%;" onmouseover="img2_hover();" onclick="enable_voice_no();">
             <img src="images/keyboard_white.png">
-            <p style="font-size: 25px;">Manually enter responses</p>
+            <p style="font-size: 1.5625vw;">Manually enter responses</p>
         </div>
     </a>
 </body>

@@ -68,7 +68,7 @@
             "type": "required",
             "intent": "number",
             "question": [
-                "Please enter your Mobile No.. This field is required."
+                "Please enter your Mobile Number. This field is required."
             ]
         },
         {
@@ -105,7 +105,7 @@
             "intent": "select",
             "name": "Relation with PwD",
             "question": [
-                "Please select your Relation with PwD."
+                "Please select your Relation with the Person with Disability."
             ],
             "options": [
                 "self",
@@ -157,7 +157,6 @@
                 "Please select your City."
             ],
             "options": [
-                "Bengaluru"
             ]
         },
         {
@@ -211,7 +210,7 @@
             "intent": "multiselect",
             "name": "Disability type",
             "question": [
-                "Please select your Disability type. You can select more than option."
+                "Please select your Disability type. You can select more than one option."
             ],
             "options": [
                 "Blindness",
@@ -227,7 +226,7 @@
                 "Muscular Dystrophy",
                 "Chronic Neurological Conditions",
                 "Specific Learning Disabilities",
-                "Multiple Scelrosis",
+                "Multiple Sclerosis",
                 "Speech and Language Disability",
                 "Thalassemia",
                 "Hemophilia",
@@ -308,7 +307,7 @@
             "options": [
                 "Agriculture",
                 "Professional and Technical",
-                "Govt. Servant",
+                "Government Servant",
                 "Clerical and Bank",
                 "Other"
             ]
