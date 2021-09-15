@@ -17,7 +17,7 @@ def CreateQuestionsPage():
 
 @eel.expose
 def GetCities(state):
-    Cities(state)
+    return Cities(state)
 
 @eel.expose
 def SendData(question, response):

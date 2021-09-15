@@ -133,8 +133,8 @@ function show_tab(n) {
     var x = document.getElementsByClassName("tab");
     x[n].style.display = "block";
     x[n].classList.add("show");
-    console.log(n);
-    console.log(x.length-1);
+    //console.log(n);
+    //console.log(x.length-1);
     //var question = x[n].getElementsByTagName("h1")[0];
     add_cities(x[n]);
     get_video(x[n]);
@@ -299,7 +299,9 @@ function capture_image(x) {
     if (video != null) {
         document.addEventListener('keypress', event => {
             if (event.code === 'KeyC') {
-                p.parentNode.removeChild(p);
+                if (p!= null) {
+                    p.parentNode.removeChild(p);
+                }
                 var scale = 1;
                 var canvas = document.createElement("canvas");
                 canvas.width = video.videoWidth * scale;
@@ -326,16 +328,17 @@ function capture_image(x) {
 async function add_cities(c) {
     if (c.querySelector("#response").name == "City") {
         var state = document.getElementsByName("State")[0];
-        console.log(state.name);
+        //console.log(state.name);
         var city = document.getElementsByName("City")[0];
         while (city.firstChild) {
             city.removeChild(city.lastChild);
         }
         var o = document.createElement('option');
         o.setAttribute('value', "");
+        o.style.cssText = "color: rgb(0, 0, 0); font-size: 1.25vw; text-align: center;";
         o.innerHTML = "Select";
         city.appendChild(o);
-        console.log(state.options[state.selectedIndex].value)
+        //console.log(state.options[state.selectedIndex].value)
         var x = state.options[state.selectedIndex].value;
         var cities = await eel.GetCities(x)();
         for (var i=0; i<cities.length; i++) {
