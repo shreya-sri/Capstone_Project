@@ -1,15 +1,17 @@
 import eel
 import json
-from playsound import playsound
 from questions_helper import CreateQuestions, Cities
 from text_to_speech import speak
+import simpleaudio as sa
 
 response_dict = dict()
 
 @eel.expose
 def ReadQuestion(text):
     speech = speak(text)
-    playsound(speech)
+    wave_obj = sa.WaveObject.from_wave_file(speech)
+    play_obj = wave_obj.play()
+    play_obj.wait_done()
 
 @eel.expose
 def CreateQuestionsPage():

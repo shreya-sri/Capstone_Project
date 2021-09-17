@@ -31,7 +31,7 @@ def speak(text):
     
     # Select the type of audio file you want returned
     audio_config = texttospeech.AudioConfig(
-        audio_encoding=texttospeech.AudioEncoding.MP3
+        audio_encoding=texttospeech.AudioEncoding.LINEAR16
     )
     
     # Perform the text-to-speech request on the text input with the selected
@@ -41,13 +41,13 @@ def speak(text):
     )
     
     #write audio to file
-    with open("output.mp3", "wb") as f:
+    with open("output.wav", "wb") as f:
         f.write(response.audio_content)
     
     #play
     #playsound("output.mp3")
 
-    return "output.mp3"
+    return "output.wav"
     
     
 

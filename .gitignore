@@ -10,4 +10,4 @@ code/Eel_GUI/__pycache__/
 
 #ignore text-to-speech output
 code/Eel_GUI/output.mp3
-
+code/Eel_GUI/output.wav
