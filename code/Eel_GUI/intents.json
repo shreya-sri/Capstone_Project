@@ -1,0 +1,368 @@
+{
+    "root": [
+        {
+            "type": "required",
+            "intent": "name",
+            "question": [
+                "Please enter your First name. This field is required."
+            ]
+        },
+        {
+            "type": "optional",
+            "intent": "name",
+            "question": [
+                "Please enter your Middle name."
+            ]
+        },
+        {
+            "type": "optional",
+            "intent": "name",
+            "question": [
+                "Please enter your Last name."
+            ]
+        },
+        {
+            "type": "optional",
+            "intent": "name",
+            "question": [
+                "Please enter your Father's name."
+            ]
+        },
+        {
+            "type": "optional",
+            "intent": "name",
+            "question": [
+                "Please enter your Mother's name."
+            ]
+        },
+        {
+            "type": "required",
+            "intent": "date",
+            "question": [
+                "Please enter your Date of birth. This field is required."
+            ]
+        },
+        {
+            "type": "required",
+            "intent": "age",
+            "question": [
+                "Please enter your Age. This field is required."
+            ]
+        },
+        {
+            "type": "choice",
+            "intent": "select",
+            "question": [
+                "Please select your Gender."
+            ],
+            "name": "Gender",
+            "options": [
+                "Other",
+                "Male",
+                "Female",
+                "Transgender",
+                "Gender non-Conforming"
+            ]
+        },
+        {
+            "type": "required",
+            "intent": "number",
+            "question": [
+                "Please enter your Mobile Number. This field is required."
+            ]
+        },
+        {
+            "type": "required",
+            "intent": "email",
+            "question": [
+                "Please enter your Email ID. This field is required."
+            ]
+        },
+        {
+            "type": "optional",
+            "intent": "text",
+            "question": [
+                "Please enter your Marks of Identification."
+            ]
+        },
+        {
+            "type": "choice",
+            "intent": "select",
+            "name": "Category",
+            "question": [
+                "Please select your Category."
+            ],
+            "options": [
+                "General",
+                "SC",
+                "ST",
+                "OBC",
+                "Other"
+            ]
+        },
+        {
+            "type": "choice",
+            "intent": "select",
+            "name": "Relation with PwD",
+            "question": [
+                "Please select your Relation with the Person with Disability."
+            ],
+            "options": [
+                "self",
+                "Family member",
+                "Other"
+            ]
+        },
+        {
+            "type": "required",
+            "intent": "file",
+            "question": [
+                "Please Upload your Photo. This field is required."
+            ]
+        },
+        {
+            "type": "required",
+            "intent": "file",
+            "question": [
+                "Please Upload your Signature. This field is required."
+            ]
+        },
+        {
+            "type": "optional",
+            "intent": "text",
+            "question": [
+                "Please Enter your Address."
+            ]
+        },
+        {
+            "type": "choice",
+            "intent": "select",
+            "name": "State",
+            "question": [
+                "Please select your State."
+            ],
+            "options": [
+                "Andaman and Nicobar Islands", "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chandigarh", "Chhattisgarh", 
+                "Dadra and Nagar Haveli", "Delhi", "Goa", "Gujarat", "Haryana", "Himachal Praddesh", "Himachal Pradesh", "Jammu and Kashmir", 
+                "Jharkhand", "Karnataka", "Kerala", "Ladakh", "Lakshadweep", "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya", "Mizoram", 
+                "Nagaland", "Odisha", "Puducherry", "Punjab", "Rajasthan", "Tamil Nadu", "Telangana", "Tripura", "Uttar Pradesh", "Uttarakhand", 
+                "West Bengal"
+            ]
+        },
+        {
+            "type": "choice",
+            "intent": "select",
+            "name": "City",
+            "question": [
+                "Please select your City."
+            ],
+            "options": [
+            ]
+        },
+        {
+            "type": "optional",
+            "intent": "text",
+            "question": [
+                "Please Enter your Village (if applicable)."
+            ]
+        },
+        {
+            "type": "required",
+            "intent": "text",
+            "question": [
+                "Please Enter your Pincode. This field is required."
+            ]
+        },
+        {
+            "type": "choice",
+            "intent": "select",
+            "name": "Address Proof",
+            "question": [
+                "Please select your Choice of Address Proof."
+            ],
+            "options": [
+                "Aadhar Card",
+                "Drivers License",
+                "Pan Card"
+            ]
+        },
+        {
+            "type": "required",
+            "intent": "file",
+            "question": [
+                "Please Upload your Address Proof. This field is required."
+            ]
+        },
+        {
+            "type": "radio",
+            "intent": "selelct",
+            "name": "Disability certificate",
+            "question": [
+                "Do you have a disability Certificate? Select one of the following."
+            ],
+            "options": [
+                "Yes",
+                "No"
+            ]
+        },
+        {
+            "type": "checkbox",
+            "intent": "multiselect",
+            "name": "Disability type",
+            "question": [
+                "Please select your Disability type. You can select more than one option."
+            ],
+            "options": [
+                "Blindness",
+                "Low-Vision",
+                "Leprosy Cured Persons",
+                "Hearing Impairment",
+                "Locomotor Disability",
+                "Dwarfism",
+                "Intellectual Disability",
+                "Mental Illness",
+                "Autism Spectrum Disorder",
+                "Cerebral Palsy",
+                "Muscular Dystrophy",
+                "Chronic Neurological Conditions",
+                "Specific Learning Disabilities",
+                "Multiple Sclerosis",
+                "Speech and Language Disability",
+                "Thalassemia",
+                "Hemophilia",
+                "Sickle Cell Disease",
+                "Multiple Disabilities including Deaf-Blindness",
+                "Acid Attack Survivors",
+                "Parkinson's Disease"
+            ]
+        },
+        {
+            "type": "radio",
+            "intent": "selelct",
+            "name": "Onset of disability",
+            "question": [
+                "Please Select the Onset of your disability. Select one of the following."
+            ],
+            "options": [
+                "Disability by Birth",
+                "Disability Later on in life"
+            ]
+        },
+        {
+            "type": "optional",
+            "intent": "text",
+            "question": [
+                "Please enter the Onset of your disability (if not at birth)."
+            ]
+        },
+        {
+            "type": "optional",
+            "intent": "text",
+            "question": [
+                "Please enter the Hospital Treating the Disability (if any)."
+            ]
+        },
+        {
+            "type": "optional",
+            "intent": "number",
+            "question": [
+                "Please Enter your Pension Card Number (if applicable)."
+            ]
+        },
+        {
+            "type": "choice",
+            "intent": "select",
+            "name": "Cause of disability",
+            "question": [
+                "Please select the cause of Disability."
+            ],
+            "options": [
+                "Accident",
+                "Diseases",
+                "Infections",
+                "Hereditary",
+                "Congenital",
+                "Medicine"
+            ]
+        },
+        {
+            "type": "choice",
+            "intent": "select",
+            "name": "Employment status",
+            "question": [
+                "Please select your Employment Status."
+            ],
+            "options": [
+                "Employed",
+                "Unemployed"
+            ]
+        },
+        {
+            "type": "choice",
+            "intent": "select",
+            "name": "Occupation",
+            "question": [
+                "Please select your Occupation."
+            ],
+            "options": [
+                "Agriculture",
+                "Professional and Technical",
+                "Government Servant",
+                "Clerical and Bank",
+                "Other"
+            ]
+        },
+        {
+            "type": "choice",
+            "intent": "select",
+            "name": "Poverty Status",
+            "question": [
+                "Please select your Poverty Status."
+            ],
+            "options": [
+                "Above Poverty Line",
+                "Below Poverty Line"
+            ]
+        },
+        {
+            "type": "choice",
+            "intent": "select",
+            "name": "Annual Income",
+            "question": [
+                "Please select your Annual Income."
+            ],
+            "options": [
+                "less than two lakh",
+                "two to five lakh",
+                "above five lakh"
+            ]
+        },
+        {
+            "type": "choice",
+            "intent": "select",
+            "name": "ID Proof",
+            "question": [
+                "Please select your Choice of ID Proof."
+            ],
+            "options": [
+                "Aadhar Card",
+                "Drivers License",
+                "Pan Card"
+            ]
+        },
+        {
+            "type": "required",
+            "intent": "file",
+            "question": [
+                "Please Upload your ID Proof. This field is required."
+            ]
+        },
+        {
+            "type": "required",
+            "intent": "number",
+            "question": [
+                "Please Enter your ID Proof Number. This field is required."
+            ]
+        }
+    ]
+}
