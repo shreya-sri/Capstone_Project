@@ -66,6 +66,14 @@ def AddFile(file):
     #os.rename(src, dst)
     shutil.move(src, dst) 
 
+@eel.expose
+def CheckBox(disability,response):
+    responses=response.split()
+    for i in responses:
+        if(i in disability):
+            return 1
+    return 0
+
 
 eel.init('web')
 eel.start('main.html', size=(1000, 600))
