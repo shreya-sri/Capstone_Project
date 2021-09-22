@@ -159,8 +159,8 @@ function next_prev(n) {
     var c = document.getElementsByClassName("show")[0];
     var currentTab = parseInt(c.id);
     if (n == 1 && !validate_form(c)) {
-        //var question = c.querySelector("h1");
-        //eel.ReadQuestion(question.innerHTML)();
+        var question = c.querySelector("h1");
+        eel.ReadQuestion(question.innerHTML)();
         return false;
     }
     if (currentTab == x.length-1) {
@@ -230,7 +230,7 @@ function validate_form(c) {
     return valid; 
 }
 
-function read_question() {
+async function read_question() {
     var item = localStorage.getItem("activate_voice");
     if (item == "yes") {
         var tab = document.getElementsByClassName("show")[0];
@@ -252,6 +252,8 @@ function read_question() {
             eel.ReadQuestion("The options are");
             eel.ReadQuestion(responses.toString());
         }
+        var val = await eel.ListenResponse()();
+        console.log(val);
     }
 }
 
