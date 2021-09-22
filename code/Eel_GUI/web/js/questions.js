@@ -318,6 +318,9 @@ function capture_image(x) {
                 link.href = dataURL;
                 link.appendChild(img);
                 link.click();
+                
+                eel.AddFile(video.title)
+
                 stop_video(video);
                 video.parentNode.replaceChild(link, video);
             }
@@ -369,4 +372,5 @@ function close_popup() {
 function submit_form() {
     document.getElementById("regForm").submit();
     eel.SaveData();
+    eel.DeleteTemp()();
 }

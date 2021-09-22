@@ -24,7 +24,7 @@ def CreateQuestions():
     <script type="text/javascript" src="js/questions.js"></script>
 </head>
 
-<body onload="show_tab(0);">
+<body onload="show_tab(21);">
     <form id="regForm">""")
         f.write("\n")
         for i in range(len(data['root'])):
