@@ -19,9 +19,9 @@ def ListenResponse():
     text =  Speech_to_Text()
     if (text):
         return text
-    else:
-        ReadQuestion("invalid response")
-        ListenResponse()
+    #else:
+    #    ReadQuestion("invalid response")
+    #    ListenResponse()
 
 @eel.expose
 def CreateQuestionsPage():
@@ -30,6 +30,14 @@ def CreateQuestionsPage():
 @eel.expose
 def GetCities(state):
     return Cities(state)
+
+@eel.expose
+def CheckBox(disability,response):
+    responses=response.split()
+    for i in responses:
+        if(i in disability):
+            return 1
+    return 0
 
 @eel.expose
 def SendData(question, response):
