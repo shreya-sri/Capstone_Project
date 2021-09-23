@@ -230,7 +230,7 @@ function validate_form(c) {
     return valid; 
 }
 
-function read_question() {
+async function read_question() {
     var item = localStorage.getItem("activate_voice");
     if (item == "yes") {
         var tab = document.getElementsByClassName("show")[0];
@@ -252,6 +252,8 @@ function read_question() {
             eel.ReadQuestion("The options are");
             eel.ReadQuestion(responses.toString());
         }
+        var val = await eel.ListenResponse()();
+        console.log(val);
     }
 }
 

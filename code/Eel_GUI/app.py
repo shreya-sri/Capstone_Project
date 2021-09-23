@@ -1,8 +1,9 @@
 import eel
 import json
+import simpleaudio as sa
 from questions_helper import CreateQuestions, Cities
 from text_to_speech import speak
-import simpleaudio as sa
+from speech_to_text import Speech_to_Text
 import os
 import getpass
 import shutil
@@ -18,6 +19,15 @@ def ReadQuestion(text):
     wave_obj = sa.WaveObject.from_wave_file(speech)
     play_obj = wave_obj.play()
     play_obj.wait_done()
+
+@eel.expose
+def ListenResponse():
+    text =  Speech_to_Text()
+    if (text):
+        return text
+    else:
+        ReadQuestion("invalid response")
+        ListenResponse()
 
 @eel.expose
 def CreateQuestionsPage():
