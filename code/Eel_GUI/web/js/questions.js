@@ -159,8 +159,8 @@ function next_prev(n) {
     var c = document.getElementsByClassName("show")[0];
     var currentTab = parseInt(c.id);
     if (n == 1 && !validate_form(c)) {
-        //var question = c.querySelector("h1");
-        //eel.ReadQuestion(question.innerHTML)();
+        var question = c.querySelector("h1");
+        eel.ReadQuestion(question.innerHTML)();
         return false;
     }
     if (currentTab == x.length-1) {
