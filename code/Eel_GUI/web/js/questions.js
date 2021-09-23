@@ -252,8 +252,54 @@ async function read_question() {
             eel.ReadQuestion("The options are");
             eel.ReadQuestion(responses.toString());
         }
+        
         var val = await eel.ListenResponse()();
-        console.log(val);
+        while (val == 0) {
+            eel.ReadQuestion("Invalid response");
+            var val = await eel.ListenResponse()();
+        }
+        fill_responses(val);
+    }
+}
+
+async function fill_responses(val) {
+    var tab = document.getElementsByClassName("show")[0];
+    var y = tab.querySelectorAll("#response");
+    var next = document.getElementsByClassName("next-button")[0];
+    if (y[0].localName == "input") {
+        if (y[0].type == "text" || y[0].type == "email" || y[0].type == "number" || y[0].type == "date") {
+            y[0].value = val;
+            next.click();
+        }
+        else if (y[0].type == "radio") {
+            for (var i = 0; i < y.length; i++) {
+                if (y[i].value.toLowerCase() == val) {
+                    y[i].checked = true;
+                    next.click();
+                }
+            }
+        }
+        else if (y[0].type == "checkbox") {
+            for (var i = 0; i < y.length; i++) {
+                var check = await eel.CheckBox(y[i].value.toLowerCase(), val)();
+                if (check == 1) {
+                    y[i].checked = true;
+                }
+            }
+            next.click();
+        }
+    }
+    else if (y[0].localName == "select") {
+        for (var i = 0; i < y[0].options.length; i++) {
+            if (val == y[0].options[i].value.toLowerCase()) {
+                y[0].options[i].selected = true;
+                next.click();
+            }
+        }
+    }
+    else if (y[0].localName == "textarea") {
+        y[0].value = val;
+        next.click();
     }
 }
 
