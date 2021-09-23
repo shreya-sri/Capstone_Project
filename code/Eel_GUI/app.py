@@ -4,6 +4,7 @@ import simpleaudio as sa
 from questions_helper import CreateQuestions, Cities
 from text_to_speech import speak
 from speech_to_text import Speech_to_Text
+from detect_face import DetectFace
 import os
 import getpass
 import shutil
@@ -12,6 +13,8 @@ import time
 
 response_dict = dict()
 temp = "C://temp"
+
+
 
 @eel.expose
 def ReadQuestion(text):
@@ -84,15 +87,11 @@ def AddFile(file):
     #os.rename(src, dst)
     shutil.move(src, dst) 
 
-@eel.expose
-def CheckBox(disability,response):
-    responses=response.split()
-    for i in responses:
-        if(i in disability):
-            return 1
-    return 0
 
 
+
+DetectFace()
 eel.init('web')
 eel.start('main.html', size=(1000, 600))
 #eel.start('main.html', mode='chrome', cmdline_args=['--kiosk'])
+
