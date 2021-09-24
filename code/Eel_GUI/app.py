@@ -6,13 +6,13 @@ from text_to_speech import speak
 from speech_to_text import Speech_to_Text
 from detect_face import DetectFace
 import os
-import getpass
 import shutil
 import time
 
 
 response_dict = dict()
-temp = "C://temp"
+downloads_path = os.path.join(os.path.expanduser('~'), 'downloads')
+temp = os.path.join(os.path.expanduser('~'), 'temp')
 
 
 
@@ -74,13 +74,12 @@ def DeleteTemp():
 @eel.expose
 def AddFile(file):
     time.sleep(1)
-    user=getpass.getuser()
     
     file=file+".png"
     
     #path = "C://temp"
     
-    src=os.path.join("C://Users/{}/Downloads/".format(user),file)
+    src=os.path.join(downloads_path,file)
     
     dst=os.path.join(temp,file)
     
@@ -92,6 +91,6 @@ def AddFile(file):
 
 DetectFace()
 eel.init('web')
-eel.start('main.html', size=(1000, 600))
+eel.start('main.html', mode='chrome_app', size=(1000, 600))
 #eel.start('main.html', mode='chrome', cmdline_args=['--kiosk'])
 
