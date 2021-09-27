@@ -30,7 +30,7 @@ proto-plus==1.19.0
 protobuf==3.17.3
 pyasn1==0.4.8
 pyasn1-modules==0.2.8
-PyAudio @ file:///E:/test/PyAudio-0.2.11-cp38-cp38-win_amd64.whl
+PyAudio
 pycparser==2.20
 pyenchant==3.2.1
 pyparsing==2.4.7

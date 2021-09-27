@@ -238,6 +238,9 @@ async function read_question() {
         var response = tab.querySelectorAll("#response");
         const responses = [];
         eel.ReadQuestion(question.innerHTML)();
+        if (response[0].type == 'date') {
+            eel.ReadQuestion("Please respond in year, month, day format");
+        }
         if (response[0].type == "radio" || response[0].type == "checkbox") {
             for (var i=0; i<response.length; i++) {
                 responses.push(response[i].value);

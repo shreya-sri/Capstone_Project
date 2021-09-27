@@ -7,13 +7,30 @@ from speech_to_text import Speech_to_Text
 from detect_face import DetectFace
 import os
 import shutil
-import time
+import base64
 
 
 response_dict = dict()
 downloads_path = os.path.join(os.path.expanduser('~'), 'downloads')
 temp = os.path.join(os.path.expanduser('~'), 'temp')
 
+
+
+def gen(camera):
+    while True:
+        frame = camera.get_frame()
+        yield frame
+
+
+@eel.expose
+def video_feed():
+    x = DetectFace()
+    y = gen(x)
+    for each in y:
+        # Convert bytes to base64 encoded str, as we can only pass json to frontend
+        blob = base64.b64encode(each)
+        blob = blob.decode("utf-8")
+        eel.updateImageSrc(blob)()
 
 
 @eel.expose
@@ -73,7 +90,7 @@ def DeleteTemp():
 
 @eel.expose
 def AddFile(file):
-    time.sleep(1)
+    eel.sleep(1)
     
     file=file+".png"
     
@@ -89,8 +106,7 @@ def AddFile(file):
 
 
 
-DetectFace()
 eel.init('web')
-eel.start('main.html', mode='chrome_app', size=(1000, 600))
+eel.start('detect.html', mode='chrome', cmdline_args=['--kiosk'])
 #eel.start('main.html', mode='chrome', cmdline_args=['--kiosk'])
 
