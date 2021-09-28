@@ -24,6 +24,7 @@ class DetectFace(object):
         #    break
 
     def __del__(self):
+        print("deconstructed")
         self.cap.release()
 
     def get_frame(self):

@@ -19,7 +19,10 @@ temp = os.path.join(os.path.expanduser('~'), 'temp')
 def gen(camera):
     while True:
         frame = camera.get_frame()
-        yield frame
+        if(camera.count==0):
+            yield frame
+        else:
+            yield 1
 
 
 @eel.expose
@@ -27,10 +30,14 @@ def video_feed():
     x = DetectFace()
     y = gen(x)
     for each in y:
-        # Convert bytes to base64 encoded str, as we can only pass json to frontend
-        blob = base64.b64encode(each)
-        blob = blob.decode("utf-8")
-        eel.updateImageSrc(blob)()
+        if(type(each)==int):
+            eel.nextPage()()
+            break
+        else:
+            # Convert bytes to base64 encoded str, as we can only pass json to frontend
+            blob = base64.b64encode(each)
+            blob = blob.decode("utf-8")
+            eel.updateImageSrc(blob)()
 
 
 @eel.expose
