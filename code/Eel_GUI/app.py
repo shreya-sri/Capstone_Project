@@ -74,6 +74,9 @@ def CheckBox(disability,response):
 
 @eel.expose
 def SendData(question, response):
+    if "upload" in question.lower():
+        response = response + ".png"
+        response = os.path.join(temp,response)
     response_dict[question] = response
     #print(response_dict)
 
@@ -81,6 +84,11 @@ def SendData(question, response):
 def SaveData():
     with open("responses.json", "w") as f:
         json.dump(response_dict, f, indent=4)
+    eel.sleep(1)
+    filename = 'save_to_db.py'
+    exec(compile(open(filename, "rb").read(), filename, 'exec'))
+    print("SaveData ends")
+
 
 @eel.expose
 def CreateTemp():

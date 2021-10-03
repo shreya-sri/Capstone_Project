@@ -1,6 +1,7 @@
 import json
 
-data = json.loads(open('intents.json').read())
+#data = json.loads(open('intents.json').read())
+data = json.loads(open('intents_test.json').read())
 states_and_cities = json.loads(open('states_and_cities.json').read())
 
 def CreateQuestions():

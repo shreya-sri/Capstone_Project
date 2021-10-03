@@ -224,7 +224,7 @@ function validate_form(c) {
         valid = false;
     }
     else if (y[0].localName == "img") {
-        eel.SendData(question.innerHTML, y[0].src);
+        eel.SendData(question.innerHTML, y[0].title);
     }
     
     return valid; 
@@ -348,6 +348,7 @@ function capture_image(x) {
     var video = x.querySelector(".video");
     var p = x.querySelector("p");
     if (video != null) {
+        var title = video.title.replace(".", "");
         document.addEventListener('keypress', event => {
             if (event.code === 'KeyC') {
                 if (p!= null) {
@@ -363,14 +364,14 @@ function capture_image(x) {
                 img.classList.add("video");
                 img.id = "response";
                 img.src = dataURL;
-                img.setAttribute("title", video.title);
+                img.setAttribute("title", title);
                 var link = document.createElement("a");
-                link.setAttribute("download", video.title);
+                link.setAttribute("download", title);
                 link.href = dataURL;
                 link.appendChild(img);
                 link.click();
                 
-                eel.AddFile(video.title)
+                eel.AddFile(title)
 
                 stop_video(video);
                 video.parentNode.replaceChild(link, video);
@@ -421,7 +422,7 @@ function close_popup() {
 }
 
 function submit_form() {
-    document.getElementById("regForm").submit();
+    //document.getElementById("regForm").submit();
     eel.SaveData();
     eel.DeleteTemp()();
 }
