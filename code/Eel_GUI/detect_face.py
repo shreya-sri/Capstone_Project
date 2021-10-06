@@ -3,6 +3,7 @@ import os
 
 class DetectFace(object):
     def __init__(self):
+        print("init face")
         #Load the cascade
         self.face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
         
@@ -24,7 +25,7 @@ class DetectFace(object):
         #    break
 
     def __del__(self):
-        print("deconstructed")
+        print("deconstructed face detection")
         self.cap.release()
 
     def get_frame(self):

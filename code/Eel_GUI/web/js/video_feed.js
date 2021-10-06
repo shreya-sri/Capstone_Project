@@ -1,5 +1,9 @@
-function py_video() {
-    eel.video_feed()()
+function faceVideo() {
+    eel.face_video()()
+}
+
+function aadharVideo() {
+    eel.aadhar_video()()
 }
 
 

@@ -5,6 +5,9 @@ from questions_helper import CreateQuestions, Cities
 from text_to_speech import speak
 from speech_to_text import Speech_to_Text
 from detect_face import DetectFace
+from detect_aadhar import DetectAadhar
+from query_aadhar_db import queryAadhar
+
 import os
 import shutil
 import base64
@@ -16,7 +19,7 @@ temp = os.path.join(os.path.expanduser('~'), 'temp')
 
 
 
-def gen(camera):
+def genFace(camera):
     while True:
         frame = camera.get_frame()
         if(camera.count==0):
@@ -24,12 +27,39 @@ def gen(camera):
         else:
             yield 1
 
+def genAadhar(camera):
+    while True:
+        frame = camera.get_frame()
+        if(camera.aadhar_number==0):
+            yield frame
+        else:
+            yield camera.aadhar_number
 
 @eel.expose
-def video_feed():
-    x = DetectFace()
-    y = gen(x)
+def aadhar_video():
+    x = DetectAadhar()
+    y = genAadhar(x)
     for each in y:
+        #print(each)
+        if(type(each)==str):
+            #each is holding the aadhar number
+            print(each)
+            queryAadhar(each)
+            eel.nextPage()()
+            break
+        else:
+            # Convert bytes to base64 encoded str, as we can only pass json to frontend
+            blob = base64.b64encode(each)
+            blob = blob.decode("utf-8")
+            eel.updateImageSrc(blob)()
+
+
+@eel.expose
+def face_video():
+    x = DetectFace()
+    y = genFace(x)
+    for each in y:
+        #print(each)
         if(type(each)==int):
             eel.nextPage()()
             break
@@ -119,6 +149,6 @@ def AddFile(file):
 
 
 eel.init('web')
-eel.start('detect.html', mode='chrome', cmdline_args=['--kiosk'])
+eel.start('detect_face.html', mode='chrome', cmdline_args=['--kiosk'])
 #eel.start('main.html', mode='chrome', cmdline_args=['--kiosk'])
 
