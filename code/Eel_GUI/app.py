@@ -1,12 +1,15 @@
 import eel
 import json
 import simpleaudio as sa
+from playsound import playsound
+
 from questions_helper import CreateQuestions, Cities
 from text_to_speech import speak
 from speech_to_text import Speech_to_Text
 from detect_face import DetectFace
 from detect_aadhar import DetectAadhar
 from query_aadhar_db import queryAadhar
+from faceRec import faceRec
 
 import os
 import shutil
@@ -39,11 +42,16 @@ def genAadhar(camera):
 def aadhar_video():
     x = DetectAadhar()
     y = genAadhar(x)
+    
     for each in y:
         #print(each)
         if(type(each)==str):
             #each is holding the aadhar number
             print(each)
+            face=faceRec("face.jpg")
+            #print(face," detected in aadhar")
+            #print(each," is the actual aadhar")
+
             queryAadhar(each)
             eel.nextPage()()
             break
@@ -73,9 +81,10 @@ def face_video():
 @eel.expose
 def ReadQuestion(text):
     speech = speak(text)
-    wave_obj = sa.WaveObject.from_wave_file(speech)
-    play_obj = wave_obj.play()
-    play_obj.wait_done()
+    playsound(speech)
+    #wave_obj = sa.WaveObject.from_wave_file(speech)
+    #play_obj = wave_obj.play()
+    #play_obj.wait_done()
 
 @eel.expose
 def ListenResponse():

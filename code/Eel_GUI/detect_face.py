@@ -44,7 +44,7 @@ class DetectFace(object):
             if len(faces)> 0: #Len of faces is >0 only when a face is detected, else it is just "()"
                 print("Face detected")
                 self.count += 1  #Frames are continuously read from live webcam, so the above statement is printed only once when the face is intially detected
-                
+                cv2.imwrite("face.jpg",self.img)
             #Draw the rectangle around each face
         for (x, y, w, h) in faces:
             cv2.rectangle(self.img, (x, y), (x+w, y+h), (255, 0, 0), 2)
