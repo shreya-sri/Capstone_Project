@@ -5,21 +5,10 @@ Created on Mon Jul 19 11:24:15 2021
 @author: Pranav
 """
 
-#pip install --upgrade google-cloud-texttospeech
-
-
-#import simpleaudio as sa
-#import mpg321
-#import subprocess
-
-#from playsound import playsound
-#from pydub import AudioSegment
-
 from gtts import gTTS
-
-# This module is imported so that we can 
-# play the converted audio
-#import os
+from pydub import AudioSegment
+from pydub.playback import play
+from pydub import effects
 
 def speak(mytext):
 
@@ -40,27 +29,17 @@ def speak(mytext):
     # welcome 
     myobj.save("output.mp3")
 
-    # Playing the converted file
-    #os.system("mpg321 output.mp3")
-    
-    #sound = AudioSegment.from_mp3("output.mp3")
-    #sound.export("output.wav", format="wav")
-    #import subprocess
-    #subprocess.call(['ffmpeg', '-i', 'output.mp3',
-     #               'output.wav'])
 
     return "output.mp3"
 
 
 if __name__=='__main__':
-    
-    speech = speak('test audio')
+        
+    speech = speak("Welcome! Would you like to use our voice assistant?")
+    song = AudioSegment.from_mp3(speech)
+    song = effects.speedup(song, 1.2, 150, 25)
+    play(song)
 
-    #playsound(speech)
-
-    #wave_obj = sa.WaveObject.from_wave_file(speech)
-    #play_obj = wave_obj.play()
-    #play_obj.wait_done()
 
 
 '''

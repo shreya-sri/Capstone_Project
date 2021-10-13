@@ -1,7 +1,11 @@
 import eel
 import json
-#import simpleaudio as sa
-#from playsound import playsound
+import os
+import shutil
+import base64
+from pydub import AudioSegment
+from pydub.playback import play
+from pydub import effects
 
 from helper_functions.questions_helper import CreateQuestions, Cities
 from helper_functions.text_to_speech import speak
@@ -10,10 +14,6 @@ from helper_functions.face_detection.detect_face import DetectFace
 from helper_functions.aadhar_detection.detect_aadhar import DetectAadhar
 from database.query_aadhar_db import queryAadhar
 from helper_functions.face_recognition.faceRec import faceRec
-
-import os
-import shutil
-import base64
 
 
 response_dict = dict()
@@ -81,12 +81,10 @@ def face_video():
 @eel.expose
 def ReadQuestion(text):
     speech = speak(text)
-    #playsound(speech)
-    #wave_obj = sa.WaveObject.from_wave_file(speech)
-    #play_obj = wave_obj.play()
-    #play_obj.wait_done()
-    speech =  "afplay " + speech 
-    os.system(speech)
+    audio = AudioSegment.from_mp3(speech)
+    #audio = effects.speedup(audio, 1.2)
+    play(audio)
+
 
 @eel.expose
 def ListenResponse():
@@ -160,6 +158,6 @@ def AddFile(file):
 
 
 eel.init('web')
-eel.start('detect_face.html', mode='chrome', cmdline_args=['--kiosk'])
+eel.start('main.html', mode='chrome', cmdline_args=['--kiosk'])
 #eel.start('main.html', mode='chrome', cmdline_args=['--kiosk'])
 
