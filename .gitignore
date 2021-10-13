@@ -19,3 +19,7 @@ code/Eel_GUI/output.wav
 code/Eel_GUI/face.jpg
 code/Eel_GUI/live.png
 code/Eel_GUI/output.mp3
+
+#ignore DS_Store
+.DS_Store
+.gitattributes
