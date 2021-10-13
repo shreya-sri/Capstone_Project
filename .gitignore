@@ -7,6 +7,15 @@ code/Eel_GUI/responses.json
 
 #ignore pycache
 code/Eel_GUI/__pycache__/
+code/Eel_GUI/helper_functions/__pycache__/
+code/Eel_GUI/helper_functions/aadhar_detection/__pycache__/
+code/Eel_GUI/helper_functions/face_detection/__pycache__/
+code/Eel_GUI/helper_functions/face_recognition/__pycache__/
+code/Eel_GUI/database/__pycache__/
 
-#ignore text-to-speech output
+
+#ignore tgenerated files
 code/Eel_GUI/output.wav
+code/Eel_GUI/face.jpg
+code/Eel_GUI/live.png
+code/Eel_GUI/output.mp3
