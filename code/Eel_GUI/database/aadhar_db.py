@@ -4,9 +4,9 @@ from mysql.connector import Error
 
 try:
     connection = mysql.connector.connect(host='localhost',
-                                         database='capstone',
-                                         user='root',
-                                         password='pineapple')
+                                         database='capstone_project',
+                                         user='root')
+                                         #password='pineapple')
         
     mySql_Create_Table_Query = """CREATE TABLE  aadhar_db (
                         Aadhar_number varchar(14) NOT NULL PRIMARY KEY,

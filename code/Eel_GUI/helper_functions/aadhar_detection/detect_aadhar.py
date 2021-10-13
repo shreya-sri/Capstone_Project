@@ -1,6 +1,5 @@
 import io
 import cv2
-import image
 import re
 import os
 
@@ -8,7 +7,7 @@ import os
 from google.cloud import vision
 from google.cloud.vision_v1 import types
 
-os.environ['GOOGLE_APPLICATION_CREDENTIALS']="API_key.json"
+os.environ['GOOGLE_APPLICATION_CREDENTIALS']="helper_functions/aadhar_detection/API_key.json"
 
 # Instantiates a client
 client = vision.ImageAnnotatorClient()

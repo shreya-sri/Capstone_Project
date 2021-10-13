@@ -1,15 +1,15 @@
 import eel
 import json
-import simpleaudio as sa
-from playsound import playsound
+#import simpleaudio as sa
+#from playsound import playsound
 
-from questions_helper import CreateQuestions, Cities
-from text_to_speech import speak
-from speech_to_text import Speech_to_Text
-from detect_face import DetectFace
-from detect_aadhar import DetectAadhar
-from query_aadhar_db import queryAadhar
-from faceRec import faceRec
+from helper_functions.questions_helper import CreateQuestions, Cities
+from helper_functions.text_to_speech import speak
+from helper_functions.speech_to_text import Speech_to_Text
+from helper_functions.face_detection.detect_face import DetectFace
+from helper_functions.aadhar_detection.detect_aadhar import DetectAadhar
+from database.query_aadhar_db import queryAadhar
+from helper_functions.face_recognition.faceRec import faceRec
 
 import os
 import shutil
@@ -81,10 +81,12 @@ def face_video():
 @eel.expose
 def ReadQuestion(text):
     speech = speak(text)
-    playsound(speech)
+    #playsound(speech)
     #wave_obj = sa.WaveObject.from_wave_file(speech)
     #play_obj = wave_obj.play()
     #play_obj.wait_done()
+    speech =  "afplay " + speech 
+    os.system(speech)
 
 @eel.expose
 def ListenResponse():

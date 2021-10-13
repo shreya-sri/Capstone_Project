@@ -5,7 +5,7 @@ class DetectFace(object):
     def __init__(self):
         print("init face")
         #Load the cascade
-        self.face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
+        self.face_cascade = cv2.CascadeClassifier('helper_functions/face_detection/haarcascade_frontalface_default.xml')
         
         #To capture video from webcam
         self.cap = cv2.VideoCapture(0)

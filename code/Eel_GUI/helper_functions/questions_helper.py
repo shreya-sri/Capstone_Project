@@ -1,8 +1,8 @@
 import json
 
 #data = json.loads(open('intents.json').read())
-data = json.loads(open('intents_test.json').read())
-states_and_cities = json.loads(open('states_and_cities.json').read())
+data = json.loads(open('helper_functions/intents_test.json').read())
+states_and_cities = json.loads(open('helper_functions/intents_test.json').read())
 
 def CreateQuestions():
     with open("web/questions.html", "w") as f:

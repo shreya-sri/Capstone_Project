@@ -7,9 +7,9 @@ def queryAadhar(aadhar_number):
     results=0
     try:
         connection = mysql.connector.connect(host='localhost',
-                                            database='capstone',
-                                            user='root',
-                                            password='pineapple')
+                                            database='capstone_project',
+                                            user='root')
+                                            #password='pineapple')
         
         mySql_Create_Table_Query = """SELECT * FROM aadhar_db WHERE  Aadhar_number = '{}'""".format(aadhar_number)
 

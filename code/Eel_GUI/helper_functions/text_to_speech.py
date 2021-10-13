@@ -8,18 +8,18 @@ Created on Mon Jul 19 11:24:15 2021
 #pip install --upgrade google-cloud-texttospeech
 
 
-import simpleaudio as sa
+#import simpleaudio as sa
 #import mpg321
-import subprocess
+#import subprocess
 
-from playsound import playsound
-from pydub import AudioSegment
+#from playsound import playsound
+#from pydub import AudioSegment
 
 from gtts import gTTS
 
 # This module is imported so that we can 
 # play the converted audio
-import os
+#import os
 
 def speak(mytext):
 
@@ -34,7 +34,7 @@ def speak(mytext):
     # the module that the converted audio should 
     # have a high speed
     myobj = gTTS(text=mytext, lang=language, slow=False)
-    print(type(myobj))
+    #print(type(myobj))
     
     # Saving the converted audio in a mp3 file named
     # welcome 
