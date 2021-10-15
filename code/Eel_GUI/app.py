@@ -3,9 +3,8 @@ import json
 import os
 import shutil
 import base64
-from pydub import AudioSegment
+from pydub import AudioSegment, effects
 from pydub.playback import play
-from pydub import effects
 
 from helper_functions.questions_helper import CreateQuestions, Cities
 from helper_functions.text_to_speech import speak
@@ -49,12 +48,15 @@ def aadhar_video():
             #each is holding the aadhar number
             print(each)
             face=faceRec("face.jpg")
+            if face == each:
+                queryAadhar(each)
+                eel.nextPage()()
+                break
+            else:
+                eel.nextPage()()
+                break
             #print(face," detected in aadhar")
             #print(each," is the actual aadhar")
-
-            queryAadhar(each)
-            eel.nextPage()()
-            break
         else:
             # Convert bytes to base64 encoded str, as we can only pass json to frontend
             blob = base64.b64encode(each)
@@ -82,7 +84,7 @@ def face_video():
 def ReadQuestion(text):
     speech = speak(text)
     audio = AudioSegment.from_mp3(speech)
-    #audio = effects.speedup(audio, 1.2)
+    audio = effects.speedup(audio, 1.2)
     play(audio)
 
 
@@ -153,8 +155,6 @@ def AddFile(file):
     
     #os.rename(src, dst)
     shutil.move(src, dst) 
-
-
 
 
 eel.init('web')

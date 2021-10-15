@@ -154,27 +154,38 @@ function show_tab(n) {
     }
 }
   
-function next_prev(n) {
+async function next_prev(n) {
     var x = document.getElementsByClassName("tab");
     var c = document.getElementsByClassName("show")[0];
     var currentTab = parseInt(c.id);
-    if (n == 1 && !validate_form(c)) {
-        // var question = c.querySelector("h1");
-        // eel.ReadQuestion(question.innerHTML)();
-        read_question();
-        return false;
-    }
-    if (currentTab == x.length-1) {
-        //document.getElementById("regForm").submit();
-        open_popup();
-        //return false;
-    }
-    else {
+    if (n == -1) {
         x[currentTab].style.display = "none";
-        currentTab = currentTab + n;
         c.classList.remove("show");
         //console.log(currentTab);
-        show_tab(currentTab);
+        show_tab(currentTab-1);
+    }
+    else {
+        if (n == 1 && !validate_form(c)) {
+            // var question = c.querySelector("h1");
+            // eel.ReadQuestion(question.innerHTML)();
+            read_question();
+            return false;
+        }
+        else {
+            var confirmed = await confirm_response(c);
+            if (currentTab == x.length-1 && confirmed == 1) {
+                //document.getElementById("regForm").submit();
+                open_popup();
+                //return false;
+            }
+            else {
+                x[currentTab].style.display = "none";
+                currentTab = currentTab + confirmed;
+                c.classList.remove("show");
+                //console.log(currentTab);
+                show_tab(currentTab);
+            }
+        }
     }
 }
 
@@ -306,6 +317,49 @@ async function fill_responses(val) {
         next.click();
     }
 }
+
+async function confirm_response(c) {
+    y = c.querySelectorAll("#response");
+    var response;
+    if (y[0].localName == "input") {
+        if (y[0].type == "text" || y[0].type == "email" || y[0].type == "number" || y[0].type == "date") {
+            response = y[0].value;
+        }
+        else if (y[0].type == "radio" || y[0].type == "checkbox") {
+            var len = 0;
+            const responses = [];
+            for (var i = 0; i < y.length; i++) {
+                if (y[i].checked == true) {
+                    len ++; 
+                    responses.push(y[i].value);     
+                }
+            }
+            response = responses.toString();
+        }
+    }
+    else if (y[0].localName == "select") {
+        response = y[0].options[y[0].selectedIndex].value   
+    }
+    else if (y[0].localName == "textarea") {
+        response = y[0].value;
+    }
+    /*else if (y[0].localName == "video") {
+        valid = false;
+    }
+    else if (y[0].localName == "img") { 
+    }*/
+    var n; //If n is 0 it stays on the same page. If n is 1 it goes to the next page.
+    eel.ReadQuestion("Confirm response? " + response);
+    var res = await eel.ListenResponse()();
+    if (res != "yes") {
+        n = 0;
+    } 
+    else {
+        n = 1;
+    } 
+    return n;
+}
+    
 
 function get_video(x) {
     var video = x.querySelector(".video");
