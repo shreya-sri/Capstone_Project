@@ -3,7 +3,11 @@ import face_recognition
 import pickle
 import cv2
 import os
- 
+
+#Get training data
+import notion_db
+import get_images 
+
 #get paths of each file in folder named Images
 #Images here contains my data(folders of various persons)
 imagePaths = list(paths.list_images('faces'))
@@ -14,7 +18,7 @@ knownNames = []
 for (i, imagePath) in enumerate(imagePaths):
     # extract the person name from the image path
     name = imagePath.split(os.path.sep)[-2]
-    print(name)
+    print("training ",name)
     # load the input image and convert it from BGR (OpenCV ordering)
     # to dlib ordering (RGB)
     image = cv2.imread(imagePath)
