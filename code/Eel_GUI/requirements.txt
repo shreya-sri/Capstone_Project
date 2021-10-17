@@ -28,6 +28,7 @@ greenlet==1.1.1
 grpcio==1.40.0
 gTTS==2.2.3
 idna==3.2
+imutils==0.5.4
 joblib==1.0.1
 mysql-connector-python==8.0.26
 nltk==3.6.5

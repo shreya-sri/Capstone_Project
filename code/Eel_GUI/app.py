@@ -158,6 +158,6 @@ def AddFile(file):
 
 
 eel.init('web')
-eel.start('main.html', mode='chrome', cmdline_args=['--kiosk'])
+eel.start('detect_face.html', mode='chrome', cmdline_args=['--kiosk'])
 #eel.start('main.html', mode='chrome', cmdline_args=['--kiosk'])
 

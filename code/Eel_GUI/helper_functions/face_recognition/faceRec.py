@@ -11,7 +11,7 @@ def faceRec(img):
     # load the harcaascade in the cascade classifier
     faceCascade = cv2.CascadeClassifier(cascPathface)
     # load the known faces and embeddings saved in last file
-    data = pickle.loads(open('face_enc', "rb").read())
+    data = pickle.loads(open('helper_functions/face_recognition/face_enc', "rb").read())
     #Find path to the image you want to detect face and pass it here
     image = cv2.imread(img)
     rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
