@@ -165,34 +165,32 @@ async function next_prev(n) {
         show_tab(currentTab-1);
     }
     else {
-        if (n == 1 && !validate_form(c)) {
+        var valid = await validate_form(c)
+        if (n == 1 && valid == false) {
             // var question = c.querySelector("h1");
             // eel.ReadQuestion(question.innerHTML)();
             read_question();
             return false;
         }
         else {
-            var confirmed = await confirm_response(c);
-            if (currentTab == x.length-1 && confirmed == 1) {
-                //document.getElementById("regForm").submit();
-                open_popup();
-                //return false;
-            }
-            else {
-                x[currentTab].style.display = "none";
-                currentTab = currentTab + confirmed;
-                c.classList.remove("show");
-                //console.log(currentTab);
-                show_tab(currentTab);
-            }
+            x[currentTab].style.display = "none";
+            currentTab = currentTab + n;
+            c.classList.remove("show");
+            //console.log(currentTab);
+            show_tab(currentTab);
         }
     }
 }
 
-function validate_form(c) {
+async function validate_form(c) {
     var y, valid = true;
     question = c.querySelector("h1");
     y = c.querySelectorAll("#response");
+    var use_voice = 0
+    var item = localStorage.getItem("activate_voice");
+    if (item == "yes") {
+        use_voice = 1
+    } 
     if (y[0].localName == "input") {
         if (y[0].type == "text" || y[0].type == "email" || y[0].type == "number" || y[0].type == "date") {
             if (y[0].value == "" && y[0].hasAttribute('required')) {
@@ -201,7 +199,19 @@ function validate_form(c) {
                 valid = false;
             }
             else {
-                eel.SendData(question.innerHTML, y[0].value);
+                if (use_voice) {
+                    var val = await confirm_response(y[0].value);
+                    if (val) {
+                        eel.SendData(question.innerHTML, y[0].value);   
+                    }
+                    else {
+                        valid = false
+                    }
+                }
+                else {
+                    eel.SendData(question.innerHTML, y[0].value);
+                } 
+                
             }
         }
         else if (y[0].type == "radio" || y[0].type == "checkbox") {
@@ -217,7 +227,18 @@ function validate_form(c) {
                 valid = false;
             }
             else {
-                eel.SendData(question.innerHTML, responses.toString());
+                if (use_voice) {
+                    var val = await confirm_response(responses.toString());
+                    if (val) {
+                        eel.SendData(question.innerHTML, responses.toString());   
+                    }
+                    else {
+                        valid = false
+                    }
+                }
+                else {
+                    eel.SendData(question.innerHTML, responses.toString());
+                } 
             }
         }
     }
@@ -226,11 +247,33 @@ function validate_form(c) {
             valid = false;
         }
         else {
-            eel.SendData(question.innerHTML, y[0].options[y[0].selectedIndex].value);
+            if (use_voice) {
+                var val = await confirm_response(y[0].options[y[0].selectedIndex].value);
+                if (val) {
+                    eel.SendData(question.innerHTML, y[0].options[y[0].selectedIndex].value);   
+                }
+                else {
+                    valid = false
+                }
+            }
+            else {
+                eel.SendData(question.innerHTML, y[0].options[y[0].selectedIndex].value);
+            } 
         }
     }
     else if (y[0].localName == "textarea") {
-        eel.SendData(question.innerHTML, y[0].value);
+        if (use_voice) {
+            var val = await confirm_response(y[0].value);
+            if (val) {
+                eel.SendData(question.innerHTML, y[0].value);   
+            }
+            else {
+                valid = false
+            }
+        }
+        else {
+            eel.SendData(question.innerHTML, y[0].value);
+        } 
     }
     else if (y[0].localName == "video") {
         valid = false;
@@ -269,10 +312,6 @@ async function read_question() {
         }
         
         var val = await eel.ListenResponse()();
-        while (val == 0) {
-            eel.ReadQuestion("Invalid response");
-            var val = await eel.ListenResponse()();
-        }
         fill_responses(val);
     }
 }
@@ -318,36 +357,7 @@ async function fill_responses(val) {
     }
 }
 
-async function confirm_response(c) {
-    y = c.querySelectorAll("#response");
-    var response;
-    if (y[0].localName == "input") {
-        if (y[0].type == "text" || y[0].type == "email" || y[0].type == "number" || y[0].type == "date") {
-            response = y[0].value;
-        }
-        else if (y[0].type == "radio" || y[0].type == "checkbox") {
-            var len = 0;
-            const responses = [];
-            for (var i = 0; i < y.length; i++) {
-                if (y[i].checked == true) {
-                    len ++; 
-                    responses.push(y[i].value);     
-                }
-            }
-            response = responses.toString();
-        }
-    }
-    else if (y[0].localName == "select") {
-        response = y[0].options[y[0].selectedIndex].value   
-    }
-    else if (y[0].localName == "textarea") {
-        response = y[0].value;
-    }
-    /*else if (y[0].localName == "video") {
-        valid = false;
-    }
-    else if (y[0].localName == "img") { 
-    }*/
+async function confirm_response(response) {
     var n; //If n is 0 it stays on the same page. If n is 1 it goes to the next page.
     eel.ReadQuestion("Confirm response? " + response);
     var res = await eel.ListenResponse()();

@@ -23,6 +23,11 @@ code/Eel_GUI/output.mp3
 #ignore DS_Store
 .DS_Store
 
+#ignore api_keys and secrets
+code/Eel_GUI/helper_functions/key.json
+code/Eel_GUI/helper_functions/aadhar_detection/API_key.json
+code/Eel_GUI/helper_functions/face_recognition/secret.json
+
 #ignore face recognition training temps
 code/Eel_GUI/helper_functions/face_recognition/db.json
 code/Eel_GUI/helper_functions/face_recognition/faces/
