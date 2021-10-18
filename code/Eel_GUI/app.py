@@ -11,7 +11,7 @@ from helper_functions.text_to_speech import speak
 from helper_functions.speech_to_text import Speech_to_Text
 from helper_functions.face_detection.detect_face import DetectFace
 from helper_functions.aadhar_detection.detect_aadhar import DetectAadhar
-from database.query_aadhar_db import queryAadhar
+#from database.query_aadhar_db import queryAadhar
 from helper_functions.face_recognition.faceRec import faceRec
 
 
@@ -19,6 +19,7 @@ response_dict = dict()
 downloads_path = os.path.join(os.path.expanduser('~'), 'downloads')
 temp = os.path.join(os.path.expanduser('~'), 'temp')
 
+db_path = os.path.join(os.getcwd(), 'helper_functions/face_recognition/db.json')
 
 
 def genFace(camera):
@@ -48,8 +49,9 @@ def aadhar_video():
             #each is holding the aadhar number
             print(each)
             face=faceRec("face.jpg")
+            print(face)
             if face == each:
-                queryAadhar(each)
+                RetrieveData(each)
                 eel.nextPage()()
                 break
             else:
@@ -79,6 +81,11 @@ def face_video():
             blob = blob.decode("utf-8")
             eel.updateImageSrc(blob)()
 
+
+def RetrieveData(id):
+    data = json.loads(open(db_path).read())
+    data_dict = data[id]
+    print(id,data_dict)
 
 @eel.expose
 def ReadQuestion(text):

@@ -20,10 +20,29 @@ def readDatabase(database, headers):
 
     res = requests.request("POST", readUrl, headers=headers)
     data = res.json()
-    print(res.status_code)
+    data_dict = dict()
+    for records in data['results']:
+        temp = dict()
+        record = records['properties']
+        index = record["Aadhar_number"]['title'][0]['plain_text']
+        for key in record.keys():
+            if key == "Aadhar_number":
+                continue
+            if key == "Photo":
+                val = record[key]['files'][0]['file']['url']
+            elif key == 'Date of birth':
+                val = record[key]['date']['start']
+            else:
+                val = record[key]['rich_text'][0]['plain_text']
+            temp[key] = val
+        
+        data_dict[index] = temp
+        
+
+    #print(res.status_code)
     #print(res.text)
 
     with open('db.json', 'w', encoding='utf8') as f:
-        json.dump(data, f, indent=4, ensure_ascii=False)
+        json.dump(data_dict, f, indent=4, ensure_ascii=False)
 
 readDatabase(database, headers)

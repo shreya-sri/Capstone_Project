@@ -3,10 +3,12 @@ import face_recognition
 import pickle
 import cv2
 import os
+import sys
+
 
 #Get training data
 import notion_db
-import get_images 
+import get_images
 
 #get paths of each file in folder named Images
 #Images here contains my data(folders of various persons)

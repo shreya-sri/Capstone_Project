@@ -8,15 +8,15 @@ faces_path='faces'
 data  = json.loads(open(db_path).read())
 
 
-print(len(data['results']), "records")
+print(len(data), "records")
 
 #pp=data['results'][0]['properties']['Aadhar_number']['title'][0]['text']['content']
 #print(pp)
 
 #each in list of records
-for record in data['results']:
-    aadhar_number=record['properties']['Aadhar_number']['title'][0]['text']['content']
-    photo_url=record['properties']['Photo']['files'][0]['file']['url']
+for aadhar_number in data.keys():
+    aadhar_number=aadhar_number
+    photo_url=data[aadhar_number]['Photo']
 
     #print(type(aadhar_number),type(photo))
 
