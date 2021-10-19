@@ -155,6 +155,7 @@ function show_tab(n) {
 }
   
 async function next_prev(n) {
+    var item = localStorage.getItem("activate_voice");
     var x = document.getElementsByClassName("tab");
     var c = document.getElementsByClassName("show")[0];
     var currentTab = parseInt(c.id);
@@ -168,11 +169,18 @@ async function next_prev(n) {
         if (n == 1 && !validate_form(c)) {
             // var question = c.querySelector("h1");
             // eel.ReadQuestion(question.innerHTML)();
-            read_question();
+            if (item == "yes") {
+                read_question();
+            }
             return false;
         }
         else {
-            var confirmed = await confirm_response(c);
+            if (item == "yes") {
+                var confirmed = await confirm_response(c);
+            }
+            else {
+                confirmed = n;
+            }
             if (currentTab == x.length-1 && confirmed == 1) {
                 //document.getElementById("regForm").submit();
                 open_popup();
@@ -244,12 +252,17 @@ function validate_form(c) {
 
 async function read_question() {
     var item = localStorage.getItem("activate_voice");
+    var next = document.getElementsByClassName("next-button")[0];
     if (item == "yes") {
         var tab = document.getElementsByClassName("show")[0];
         var question = tab.querySelector("h1");
         var response = tab.querySelectorAll("#response");
         const responses = [];
         eel.ReadQuestion(question.innerHTML)();
+        if (response[0].value != "" && (response[0].type != "radio" || response[0].type != "checkbox")) {
+            next.click();
+            return;
+        }
         if (response[0].type == 'date') {
             eel.ReadQuestion("Please respond in year, month, day format");
         }

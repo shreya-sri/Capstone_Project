@@ -15,7 +15,6 @@ print(len(data), "records")
 
 #each in list of records
 for aadhar_number in data.keys():
-    aadhar_number=aadhar_number
     photo_url=data[aadhar_number]['Photo']
 
     #print(type(aadhar_number),type(photo))

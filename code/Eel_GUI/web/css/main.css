@@ -263,6 +263,12 @@ input[type="checkbox"]:checked {
     width: 50%;
 }
 
+.photo {
+    align-content: center;
+    margin-left: 25%;
+    width: 50%;
+}
+
 .capture {
     position: absolute;
     top: 6vw;

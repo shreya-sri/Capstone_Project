@@ -85,7 +85,7 @@ def face_video():
 def RetrieveData(id):
     data = json.loads(open(db_path).read())
     data_dict = data[id]
-    print(id,data_dict)
+    CreateQuestions(data_dict)
 
 @eel.expose
 def ReadQuestion(text):

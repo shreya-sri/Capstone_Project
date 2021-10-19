@@ -4,7 +4,7 @@ import json
 data = json.loads(open('helper_functions/intents_test.json').read())
 states_and_cities = json.loads(open('helper_functions/intents_test.json').read())
 
-def CreateQuestions():
+def CreateQuestions(aadhar_data):
     with open("web/questions.html", "w") as f:
         f.write("""<!DOCTYPE html>
 <html lang="en">
@@ -28,11 +28,32 @@ def CreateQuestions():
 <body onload="show_tab(0);">
     <form id="regForm">""")
         f.write("\n")
+        keys = list(aadhar_data.keys())
+        keys.remove("Photo")
+        n = len(keys)
+        i = len(keys)
+        while i > 0:
+            if keys[i-1] == "Photo":
+                continue
+            f.write("""        <div class="tab animated fadeInTop" id="{}">""".format(n-i))
+            f.write("\n")
+            f.write("""            <h1 id="question" style="color: rgb(102, 252, 241); font-size: 3.125vw; text-align: center;"> is this your """ +  keys[i-1] + " ?</h1>")
+            f.write("\n")
+            if keys[i-1] == "Address":
+                    f.write("""            <textarea class="txtbox use-keyboard-input" id="response" style="height: 12.5vw;">{}</textarea>""".format(aadhar_data['Address']))
+            elif keys[i-1] == "Date of Birth":
+                f.write("""            <input type="date" required class="txtbox use-keyboard-input" value="{}" id="response">""".format(aadhar_data['Date of birth']))
+            else:
+                f.write("""            <input type="text" required class="txtbox use-keyboard-input" value ="{}" required id="response">""".format(aadhar_data[keys[i-1]]))
+            f.write("\n")
+            f.write("""        </div>""")
+            f.write("\n")
+            i -= 1
+
         for i in range(len(data['root'])):
             question = data['root'][i]['question'][-1]
-            intent = data['root'][i]['intent']
             widget = data['root'][i]['type']
-            f.write("""        <div class="tab animated fadeInTop" id="{}">""".format(i))
+            f.write("""        <div class="tab animated fadeInTop" id="{}">""".format(n+i))
             f.write("\n")
             question_string = """            <h1 id="question" style="color: rgb(102, 252, 241); font-size: 3.125vw; text-align: center;">""" +  question + "</h1>"
             f.write(question_string)

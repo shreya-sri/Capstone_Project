@@ -1,20 +1,6 @@
 {
     "root": [
         {
-            "type": "required",
-            "intent": "name",
-            "question": [
-                "Please enter your First name. This field is required."
-            ]
-        },
-        {
-            "type": "optional",
-            "intent": "name",
-            "question": [
-                "Please enter your Last name."
-            ]
-        },
-        {
             "type": "choice",
             "intent": "select",
             "name": "Category",
@@ -27,13 +13,6 @@
                 "ST",
                 "OBC",
                 "Other"
-            ]
-        },
-        {
-            "type": "required",
-            "intent": "file",
-            "question": [
-                "Please Upload your Photo. This field is required."
             ]
         },
         {
@@ -62,13 +41,6 @@
                 "Hearing Impairment",
                 "Locomotor Disability",
                 "Dwarfism"
-            ]
-        },
-        {
-            "type": "required",
-            "intent": "number",
-            "question": [
-                "Please Enter your Aadhar Number. This field is required."
             ]
         }
     ]
