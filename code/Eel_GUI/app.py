@@ -5,7 +5,7 @@ import shutil
 import base64
 from pydub import AudioSegment, effects
 from pydub.playback import play
-
+import beepy
 from helper_functions.questions_helper import CreateQuestions, Cities
 from helper_functions.text_to_speech import speak
 from helper_functions.speech_to_text import Speech_to_Text
@@ -92,11 +92,12 @@ def ReadQuestion(text):
     speech = speak(text)
     audio = AudioSegment.from_mp3(speech)
     audio = effects.speedup(audio, 1.2)
-    play(audio)
+    play(audio) 
 
 
 @eel.expose
 def ListenResponse():
+    beepy.beep(sound=6)
     text =  Speech_to_Text()
     if (text):
         return text
@@ -171,6 +172,6 @@ def AddFile(file):
 
 
 eel.init('web')
-eel.start('detect_face.html', mode='chrome', cmdline_args=['--kiosk'])
+eel.start('main.html', mode='chrome', cmdline_args=['--kiosk'])
 #eel.start('main.html', mode='chrome', cmdline_args=['--kiosk'])
 
