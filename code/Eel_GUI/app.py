@@ -22,6 +22,28 @@ temp = os.path.join(os.path.expanduser('~'), 'temp')
 db_path = os.path.join(os.getcwd(), 'helper_functions/face_recognition/db.json')
 
 
+@eel.expose
+def ReadQuestion(text):
+    speech = speak(text)
+    audio = AudioSegment.from_mp3(speech)
+    audio = effects.speedup(audio, 1.2)
+    play(audio) 
+
+
+@eel.expose
+def ListenResponse():
+    beepy.beep(sound=1)
+    text =  Speech_to_Text()
+    if (text):
+        return text
+    else:
+        print("No response")
+        return None
+    #else:
+    #    ReadQuestion("invalid response")
+    #    ListenResponse()
+
+
 def genFace(camera):
     while True:
         frame = camera.get_frame()
@@ -40,6 +62,8 @@ def genAadhar(camera):
 
 @eel.expose
 def aadhar_video():
+    ReadQuestion("Please hold your Aadhar card up to the camera.")
+
     x = DetectAadhar()
     y = genAadhar(x)
     
@@ -47,9 +71,9 @@ def aadhar_video():
         #print(each)
         if(type(each)==str):
             #each is holding the aadhar number
-            print(each)
+            print("OCR aadhar: ",each)
             face=faceRec("face.jpg")
-            print(face)
+            print("Face:",face)
             if face == each:
                 RetrieveData(each)
                 eel.nextPage()()
@@ -86,26 +110,6 @@ def RetrieveData(id):
     data = json.loads(open(db_path).read())
     data_dict = data[id]
     CreateQuestions(data_dict)
-
-@eel.expose
-def ReadQuestion(text):
-    speech = speak(text)
-    audio = AudioSegment.from_mp3(speech)
-    audio = effects.speedup(audio, 1.2)
-    play(audio) 
-
-
-@eel.expose
-def ListenResponse():
-    beepy.beep(sound=6)
-    text =  Speech_to_Text()
-    if (text):
-        return text
-    else:
-        print(text)
-    #else:
-    #    ReadQuestion("invalid response")
-    #    ListenResponse()
 
 @eel.expose
 def CreateQuestionsPage():
@@ -172,6 +176,6 @@ def AddFile(file):
 
 
 eel.init('web')
+#eel.start('detect_face.html', mode='chrome', cmdline_args=['--kiosk'])
 eel.start('main.html', mode='chrome', cmdline_args=['--kiosk'])
-#eel.start('main.html', mode='chrome', cmdline_args=['--kiosk'])
 

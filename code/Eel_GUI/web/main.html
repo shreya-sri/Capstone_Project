@@ -16,7 +16,7 @@
 <body>
     <div class="div1 animated fadeInTop">
         <h1 style="color: #66fcf1; font-size: 4.5vw; text-align: center;">Welcome!</h1>
-        <h1 style="color: #66fcf1; font-size: 3.75vw; text-align: center;">Please wait three seconds after each question before answering.</h1>
+        <!--<h1 style="color: #66fcf1; font-size: 3.75vw; text-align: center;">Please wait three seconds after each question before answering.</h1>-->
         <h1 style="color: #66fcf1; font-size: 3.75vw; text-align: center;">Would you like to use our voice assistant?</h1>
         
     </div>
@@ -48,6 +48,7 @@
 
         async function listen() {
             var val = await eel.ListenResponse()();
+            if(!val){read_text();}
             if (val.includes("yes")) {
                 var ele = document.getElementById("voice_yes");
                 ele.click();

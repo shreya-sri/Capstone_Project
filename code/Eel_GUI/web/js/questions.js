@@ -177,6 +177,7 @@ async function next_prev(n) {
         else {
             if (item == "yes") {
                 var confirmed = await confirm_response(c);
+                //eel.print_terminal("confirmed:"+confirmed)
             }
             else {
                 confirmed = n;
@@ -361,11 +362,14 @@ async function confirm_response(c) {
     }
     else if (y[0].localName == "img") { 
     }*/
-    var n; //If n is 0 it stays on the same page. If n is 1 it goes to the next page.
+    var n=0; //If n is 0 it stays on the same page. If n is 1 it goes to the next page.
     eel.ReadQuestion("Confirm response? " + response);
     var res = await eel.ListenResponse()();
-    //if (res != "yes") {
-     if (!res.includes("yes")) {
+    //eel.print_terminal("in confirm_response:"+res+n);
+    if (!res){
+        return 0
+    }
+    if (!res.includes("yes")) {
         n = 0;
     } 
     else {
