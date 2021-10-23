@@ -26,22 +26,6 @@
                 "Yes",
                 "No"
             ]
-        },
-        {
-            "type": "checkbox",
-            "intent": "multiselect",
-            "name": "Disability type",
-            "question": [
-                "Please select your Disability type. You can select more than one option."
-            ],
-            "options": [
-                "Blindness",
-                "Low-Vision",
-                "Leprosy Cured Persons",
-                "Hearing Impairment",
-                "Locomotor Disability",
-                "Dwarfism"
-            ]
         }
     ]
 }

@@ -259,7 +259,7 @@ async function read_question() {
         var response = tab.querySelectorAll("#response");
         const responses = [];
         eel.ReadQuestion(question.innerHTML)();
-        if (response[0].value != "" && (response[0].type != "radio" || response[0].type != "checkbox")) {
+        if (response[0].value != "" && !(response[0].type == "radio" || response[0].type == "checkbox")) {
             next.click();
             return;
         }
@@ -364,7 +364,8 @@ async function confirm_response(c) {
     var n; //If n is 0 it stays on the same page. If n is 1 it goes to the next page.
     eel.ReadQuestion("Confirm response? " + response);
     var res = await eel.ListenResponse()();
-    if (res != "yes") {
+    //if (res != "yes") {
+     if (!res.includes("yes")) {
         n = 0;
     } 
     else {
@@ -383,8 +384,8 @@ function get_video(x) {
                     video.srcObject = stream;
                     video.play();
                 });
-            }
-        }
+             }
+        } 
         else if (video.localName == "img") {
             var new_video = document.createElement("video");
             new_video.classList.add('video');

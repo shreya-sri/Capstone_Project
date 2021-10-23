@@ -100,6 +100,8 @@ def ListenResponse():
     text =  Speech_to_Text()
     if (text):
         return text
+    else:
+        print(text)
     #else:
     #    ReadQuestion("invalid response")
     #    ListenResponse()
@@ -142,6 +144,10 @@ def CreateTemp():
         os.mkdir(temp)
     except:
         pass
+
+@eel.expose
+def print_terminal(val):
+    print(val)
 
 @eel.expose
 def DeleteTemp():
