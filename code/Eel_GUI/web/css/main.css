@@ -319,3 +319,10 @@ input[type="checkbox"]:checked {
     text-decoration: none;
     cursor: pointer;
 }
+
+table {
+    margin-left: 5%;
+    margin-right: 5%;
+    padding-left: 10%;
+    padding-right: 10%;
+}

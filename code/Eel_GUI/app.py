@@ -7,6 +7,7 @@ from pydub import AudioSegment, effects
 from pydub.playback import play
 import beepy
 from helper_functions.questions_helper import CreateQuestions, Cities
+from helper_functions.create_responses_page import CreateResponsesPage
 from helper_functions.text_to_speech import speak
 from helper_functions.speech_to_text import Speech_to_Text
 from helper_functions.face_detection.detect_face import DetectFace
@@ -133,13 +134,16 @@ def SendData(question, response):
     #print(response_dict)
 
 @eel.expose
-def SaveData():
+def FormResponsesPage():
     with open("responses.json", "w") as f:
         json.dump(response_dict, f, indent=4)
     eel.sleep(1)
-    filename = 'save_to_db.py'
-    exec(compile(open(filename, "rb").read(), filename, 'exec'))
-    print("SaveData ends")
+    CreateResponsesPage()
+
+@eel.expose
+def SaveData():
+    pass
+
 
 
 @eel.expose

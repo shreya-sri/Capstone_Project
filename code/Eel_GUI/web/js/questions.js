@@ -184,7 +184,9 @@ async function next_prev(n) {
             }
             if (currentTab == x.length-1 && confirmed == 1) {
                 //document.getElementById("regForm").submit();
-                open_popup();
+                eel.FormResponsesPage();
+                eel.sleep(1)
+                document.getElementsByClassName("next-button")[0].onclick = "location.href='show_responses.html;"
                 //return false;
             }
             else {
