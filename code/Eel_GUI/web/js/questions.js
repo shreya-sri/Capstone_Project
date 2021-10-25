@@ -1,134 +1,3 @@
-async function all_questions() {
-    var prnt = document.getElementById("regForm");
-    prnt.classList.add("animated");
-    prnt.classList.add("fadeInTop");
-    var num = await eel.GetNum()();
-    for (var j=num; j>=0; j--) {
-        var tab = document.createElement("div");
-        tab.classList.add("tab");
-        if (j == 0) {
-            tab.style.display = "block";
-            tab.classList.add("show");
-        }
-        tab.id = String(j);
-        tab.classList.add("animated");
-        tab.classList.add("fadeInTop");
-        prnt.insertBefore(tab, prnt.firstChild);
-        var txt = await eel.GetQuestion(j)();
-        q = document.createElement("h1");
-        q.id = "question";
-        q.style.cssText = "color: #66fcf1; font-size: 3.125vw; text-align: center;";
-        if (txt == "") {
-            question = "Thank you!";
-            q.innerHTML = question;
-            tab.appendChild(q);
-        }
-        else {
-            var question = txt[0];
-            q.innerHTML = question;
-            tab.appendChild(q);
-            var response = txt[1].split(':');
-            if (response.length == 1) {
-                if (response[0] == "multi_textbox") {
-                    var m = document.createElement('textarea');
-                    m.classList.add("txtbox");
-                    m.classList.add("use-keyboard-input");
-                    m.id = "response";
-                    m.style.height = '12.5vw';
-                    tab.appendChild(m);
-                }
-                else if (response[0] == "camera") {
-                    var m = document.createElement('video');
-                    m.classList.add('video');
-                    m.setAttribute('width', 240);
-                    m.setAttribute('height', 180);
-                    m.setAttribute('autoplay', '');
-                    m.id = "response";
-                    tab.appendChild(m);
-                }
-                else {
-                    var m = document.createElement('input');
-                    if (response[0] == "textbox") {
-                        m.setAttribute('type', 'text');
-                    }
-                    else if (response[0] == "email") {
-                        m.setAttribute('type', 'email');
-                    }
-                    else if (response[0] == "number") {
-                        m.setAttribute('type', 'number');
-                    }
-                    else if (response[0] == "date") {
-                        m.setAttribute('type', 'date');
-                    }
-                    if (question.includes("required") == true) {
-                        m.setAttribute('required', true);
-                    } 
-                    m.classList.add("txtbox");
-                    m.classList.add("use-keyboard-input");
-                    m.id = "response";
-                    tab.appendChild(m);
-                }
-            }
-            else {
-                if (response[0] == "radio") {
-                    var vals = response[1].split('/')
-                    var options = vals[1].split(',');
-                    var name = vals[0];
-                    for (var i=0; i<options.length; i++) {
-                        var m = document.createElement('input');
-                        m.setAttribute('type', 'radio');
-                        m.setAttribute('name', name);
-                        m.setAttribute('value', options[i]);
-                        m.setAttribute('required', true);
-                        var label = document.createElement('label');
-                        label.style.cssText = "color: #ffffff; font-size: 1.25vw; text-align: center;";
-                        label.classList.add("label-radio");
-                        label.innerHTML = options[i];
-                        tab.appendChild(label);
-                        label.appendChild(m);
-                    }
-                }
-                else if (response[0] == "dropdown") {
-                    var vals = response[1].split('/')
-                    var options = vals[1].split(',');
-                    var name = vals[0];
-                    var m = document.createElement('select');
-                    m.setAttribute('name', name);
-                    m.setAttribute('required', true);
-                    m.classList.add('dropdown');
-                    for (var i=0; i<options.length; i++) {
-                        o = document.createElement('option');
-                        o.setAttribute('value', options[i]);
-                        o.style.cssText = "color: #000000; font-size: 1.25vw; text-align: center;";
-                        o.innerHTML = options[i];
-                        m.appendChild(o);
-                    }
-                    tab.appendChild(m);
-                }
-                else if (response[0] == "checkbox") {
-                    var vals = response[1].split('/')
-                    var options = vals[1].split(',');
-                    var name = vals[0];
-                    for (var i=0; i<options.length; i++) {
-                        var m = document.createElement('input');
-                        m.setAttribute('type', 'checkbox');
-                        m.setAttribute('name', name);
-                        m.setAttribute('value', options[i]);
-                        m.setAttribute("required", true);
-                        var label = document.createElement('label');
-                        label.style.cssText = "color: #ffffff; font-size: 1.25vw; text-align: center;";
-                        label.classList.add("label-checkbox");
-                        label.innerHTML = options[i];
-                        tab.appendChild(label);
-                        label.appendChild(m);
-                    }
-                }
-            }
-        }
-    }
-}
-
-
 function show_tab(n) {
     var x = document.getElementsByClassName("tab");
     x[n].style.display = "block";
@@ -147,7 +16,15 @@ function show_tab(n) {
         document.getElementsByClassName("prev-button")[0].style.display = "inline";
     }
     if (n == (x.length - 1)) {
-        document.getElementsByClassName("next-button")[0].innerHTML = "Submit";
+        var btn = document.getElementsByClassName("next-button")[0];
+        var div_btn = document.createElement('div');
+        div_btn.classList.add("next-button");
+        div_btn.innerHTML = "Submit";
+        var link = document.createElement('a');
+        link.href = "show_responses.html";
+        link.appendChild(div_btn);
+        var prnt = btn.parentNode;
+        prnt.replaceChild(link, btn);
     } 
     else {
         document.getElementsByClassName("next-button")[0].innerHTML = "Next";
@@ -175,18 +52,20 @@ async function next_prev(n) {
             return false;
         }
         else {
+            var confirmed = n;
             if (item == "yes") {
-                var confirmed = await confirm_response(c);
+                confirmed = await confirm_response(c);
                 //eel.print_terminal("confirmed:"+confirmed)
-            }
-            else {
-                confirmed = n;
             }
             if (currentTab == x.length-1 && confirmed == 1) {
                 //document.getElementById("regForm").submit();
-                eel.FormResponsesPage();
-                eel.sleep(1)
-                document.getElementsByClassName("next-button")[0].onclick = "location.href='show_responses.html;"
+                /*eel.FormResponsesPage();
+                //eel.sleep(1);
+                document.getElementsByClassName("next-button")[0].querySelector("a");
+                eel.print_terminal(link.href);
+                console.log("link accessed"); 
+                eel.sleep(5);
+                link.click();*/
                 //return false;
             }
             else {
@@ -197,6 +76,38 @@ async function next_prev(n) {
                 show_tab(currentTab);
             }
         }
+    }
+}
+
+function display_responses() {
+    var form = document.getElementById("regForm");
+    var btn = document.getElementsByClassName("next-button")[0];
+    var link = document.createElement('a');
+    link.href = "show_responses.html";
+    link.appendChild(btn);
+    form.appendChild(link);
+    
+    //ink.click;
+}
+
+async function show_responses() {
+    var prnt = document.querySelector("table");
+    var response_dict = await eel.GetResponses()();
+    for (var i in response_dict) {
+        var row = document.createElement("tr");
+        var row_item1 = document.createElement("td");
+        var row_item2 = document.createElement("td");
+        question = document.createElement("h1");
+        response = document.createElement("h1");
+        question.style.cssText = "color: #66fcf1; font-size: 1.5625vw;";
+        response.style.cssText = "color: #66fcf1; font-size: 1.5625vw;";
+        question.innerHTML = i
+        response.innerHTML = response_dict[i]
+        row_item1.appendChild(question);
+        row_item2.appendChild(response);
+        row.appendChild(row_item1);
+        row.appendChild(row_item2);
+        prnt.appendChild(row);
     }
 }
 

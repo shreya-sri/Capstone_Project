@@ -17,43 +17,15 @@
     <script type="text/javascript" src="js/questions.js"></script>
 </head>
 
-<body>
+<body onload="show_responses();">
     <div class="div1 animated fadeInTop">
         <h1 style="color: #66fcf1; font-size: 4.5vw; text-align: center;">Your Responses</h1>
         <table>
-            <tr>
-                <td><h1 id="question" style="color: rgb(102, 252, 241); font-size: 1.5625vw;">Please enter your First name. This field is required.</h1> </td>
-                <td><h1 id="question" style="color: rgb(102, 252, 241); font-size: 1.5625vw;">shreya</h1></td>
-            </tr>
-            <tr>
-                <td><h1 id="question" style="color: rgb(102, 252, 241); font-size: 1.5625vw;">Please enter your Last name.</h1> </td>
-                <td><h1 id="question" style="color: rgb(102, 252, 241); font-size: 1.5625vw;">shri</h1></td>
-            </tr>
-            <tr>
-                <td><h1 id="question" style="color: rgb(102, 252, 241); font-size: 1.5625vw;">Please select your Category.</h1> </td>
-                <td><h1 id="question" style="color: rgb(102, 252, 241); font-size: 1.5625vw;">General</h1></td>
-            </tr>
-            <tr>
-                <td><h1 id="question" style="color: rgb(102, 252, 241); font-size: 1.5625vw;">Please Upload your Photo. This field is required.</h1> </td>
-                <td><h1 id="question" style="color: rgb(102, 252, 241); font-size: 1.5625vw;">Photo</h1></td>
-            </tr>
-            <tr>
-                <td><h1 id="question" style="color: rgb(102, 252, 241); font-size: 1.5625vw;">Do you have a disability Certificate? Select one of the following.</h1> </td>
-                <td><h1 id="question" style="color: rgb(102, 252, 241); font-size: 1.5625vw;">Yes</h1></td>
-            </tr>
-            <tr>
-                <td><h1 id="question" style="color: rgb(102, 252, 241); font-size: 1.5625vw;">Please select your Disability type. You can select more than one option.</h1> </td>
-                <td><h1 id="question" style="color: rgb(102, 252, 241); font-size: 1.5625vw;">Blindness</h1></td>
-            </tr>
-            <tr>
-                <td><h1 id="question" style="color: rgb(102, 252, 241); font-size: 1.5625vw;">Please Enter your Aadhar Number. This field is required.</h1> </td>
-                <td><h1 id="question" style="color: rgb(102, 252, 241); font-size: 1.5625vw;">12345</h1></td>
-            </tr>
         </table>
-        <button class="continue" type="submit" style="display:block;" onclick="next_prev(1);">Submit</button>
+        <button class="continue" type="submit" style="display:block;" onclick="open_popup();">Submit</button>
         <div id="myModal" class="modal">
             <div class="modal-content">
-                <span class="close" onclick="close_popup();">&times;</span>
+                <span class="close" onclick="close_popup();"></span>
                 <p style="color: rgb(102, 252, 241); font-size: 2.5vw; text-align: center;">Confirm Submission?</p>
                 <button class="prev-button" style="margin-top: 0; margin-left: 10%; margin-right: 0; padding: 0.625vw 0.625vw; font-size: 1.25vw;" onclick="close_popup();">Go back</button>
                 <button class="next-button" style="margin-top: 0; margin-left: 0; margin-right: 10%; padding: 0.625vw 0.625vw; font-size: 1.25vw;" onclick="submit_form();">Confirm</button>

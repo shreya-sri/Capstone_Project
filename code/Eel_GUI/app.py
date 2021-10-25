@@ -7,7 +7,7 @@ from pydub import AudioSegment, effects
 from pydub.playback import play
 import beepy
 from helper_functions.questions_helper import CreateQuestions, Cities
-from helper_functions.create_responses_page import CreateResponsesPage
+#from helper_functions.create_responses_page import CreateResponsesPage
 from helper_functions.text_to_speech import speak
 from helper_functions.speech_to_text import Speech_to_Text
 from helper_functions.face_detection.detect_face import DetectFace
@@ -54,9 +54,15 @@ def genFace(camera):
             yield 1
 
 def genAadhar(camera):
+    f=0 #frame number
     while True:
+        f+=1
+        #print(f)
         frame = camera.get_frame()
         if(camera.aadhar_number==0):
+            if(f%15==0):
+                #print(f)
+                ReadQuestion("Aadhar not detected.")
             yield frame
         else:
             yield camera.aadhar_number
@@ -80,7 +86,8 @@ def aadhar_video():
                 eel.nextPage()()
                 break
             else:
-                eel.nextPage()()
+                ReadQuestion("Aadhar and face don't match.")
+                eel.restart()()
                 break
             #print(face," detected in aadhar")
             #print(each," is the actual aadhar")
@@ -134,11 +141,12 @@ def SendData(question, response):
     #print(response_dict)
 
 @eel.expose
-def FormResponsesPage():
-    with open("responses.json", "w") as f:
-        json.dump(response_dict, f, indent=4)
-    eel.sleep(1)
-    CreateResponsesPage()
+def GetResponses():
+    return response_dict
+    #with open("responses.json", "w") as f:
+    #    json.dump(response_dict, f, indent=4)
+    #eel.sleep(1)
+    #CreateResponsesPage()
 
 @eel.expose
 def SaveData():
@@ -180,6 +188,6 @@ def AddFile(file):
 
 
 eel.init('web')
-#eel.start('detect_face.html', mode='chrome', cmdline_args=['--kiosk'])
-eel.start('main.html', mode='chrome', cmdline_args=['--kiosk'])
+eel.start('detect_face.html', mode='chrome', cmdline_args=['--kiosk'])
+#eel.start('main.html', mode='chrome', cmdline_args=['--kiosk'])
 

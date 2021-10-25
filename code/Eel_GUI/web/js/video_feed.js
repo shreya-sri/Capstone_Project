@@ -20,3 +20,9 @@ function nextPage() {
 
 }
 
+eel.expose(restart);
+function restart(){
+    let elem = document.getElementById('next');
+    elem.href="detect_face.html";
+    elem.click()
+}
