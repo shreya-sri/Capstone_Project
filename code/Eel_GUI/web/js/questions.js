@@ -48,6 +48,21 @@ async function temp_fix() {
         var confirmed = 1;
         if (item == "yes") {
             confirmed = await confirm_response(c);
+            if (confirmed == 0) {
+                response = c.querySelectorAll("#response");
+                if (response.length == 1) {
+                    response[0].value = "";
+                }
+                else {
+                    for(var i=0; i<response.length; i++){
+                        response[i].checked = "";
+                    }
+                }
+                read_question();
+            }
+            else {
+                window.location.assign("show_responses.html");
+            }
             //eel.print_terminal("confirmed:"+confirmed)
         }
         if (currentTab == x.length-1 && confirmed == 1) {
@@ -94,11 +109,25 @@ async function next_prev(n) {
                 //return false;
             }
             else {
+                if (confirmed == 0) {
+                    response = c.querySelectorAll("#response");
+                    if (response.length == 1) {
+                        response[0].value = "";
+                    }
+                    else {
+                        for(var i=0; i<response.length; i++){
+                            response[i].checked = "";
+                        }
+                    }
+                    read_question();
+                }
+                else {
                 x[currentTab].style.display = "none";
                 currentTab = currentTab + confirmed;
                 c.classList.remove("show");
                 //console.log(currentTab);
                 show_tab(currentTab);
+                }
             }
         }
     }

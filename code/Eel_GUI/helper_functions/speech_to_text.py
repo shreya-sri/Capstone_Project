@@ -1,11 +1,12 @@
 import speech_recognition as sr
- 
+import beepy
  
 def Speech_to_Text():
     r = sr.Recognizer()
     
     with sr.Microphone() as source:
         r.adjust_for_ambient_noise(source)
+        beepy.beep(sound = 1)
         print("Listening...")
         audio = r.listen(source)
         print("Done")

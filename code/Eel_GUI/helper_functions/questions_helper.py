@@ -37,7 +37,7 @@ def CreateQuestions(aadhar_data):
                 continue
             f.write("""        <div class="tab animated fadeInTop" id="{}">""".format(n-i))
             f.write("\n")
-            f.write("""            <h1 id="question" style="color: rgb(102, 252, 241); font-size: 3.125vw; text-align: center;"> is this your """ +  keys[i-1] + " ?</h1>")
+            f.write("""            <h1 id="question" style="color: rgb(102, 252, 241); font-size: 3.125vw; text-align: center;"> Please enter your """ +  keys[i-1] + "</h1>")
             f.write("\n")
             if keys[i-1] == "Address":
                     f.write("""            <textarea class="txtbox use-keyboard-input" id="response" style="height: 12.5vw;">{}</textarea>""".format(aadhar_data['Address']))

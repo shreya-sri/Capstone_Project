@@ -5,7 +5,6 @@ import shutil
 import base64
 from pydub import AudioSegment, effects
 from pydub.playback import play
-import beepy
 from helper_functions.questions_helper import CreateQuestions, Cities
 #from helper_functions.create_responses_page import CreateResponsesPage
 from helper_functions.text_to_speech import speak
@@ -34,7 +33,6 @@ def ReadQuestion(text):
 
 @eel.expose
 def ListenResponse():
-    beepy.beep(sound=1)
     text =  Speech_to_Text()
     if (text):
         return text

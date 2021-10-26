@@ -35,10 +35,12 @@
 </body>
 
 <script type="text/javascript">
-    var item = localStorage.getItem("activate_voice");
-    if (item == "yes") {
-        eel.ReadQuestion("The Responses will be submitted")();
-        document.getElementsByClassName("next-button")[0].click();
+    function save_responses() {
+        var item = localStorage.getItem("activate_voice");
+        if (item == "yes") {
+            eel.ReadQuestion("The Responses will be submitted")();
+            document.getElementsByClassName("next-button")[0].click();
+        }
     }
-    
+    setTimeout(save_responses, 3000);
 </script>
