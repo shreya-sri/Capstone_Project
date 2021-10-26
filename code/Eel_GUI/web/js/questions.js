@@ -21,16 +21,41 @@ function show_tab(n) {
         div_btn.classList.add("next-button");
         div_btn.innerHTML = "Submit";
         var link = document.createElement('a');
-        link.href = "show_responses.html";
         link.appendChild(div_btn);
         var prnt = btn.parentNode;
         prnt.replaceChild(link, btn);
+        link.setAttribute('onclick', 'temp_fix()')
     } 
     else {
         document.getElementsByClassName("next-button")[0].innerHTML = "Next";
     }
 }
   
+async function temp_fix() {
+    var item = localStorage.getItem("activate_voice");
+    var x = document.getElementsByClassName("tab");
+    var c = document.getElementsByClassName("show")[0];
+    var currentTab = parseInt(c.id);
+    if (!validate_form(c)) {
+        // var question = c.querySelector("h1");
+        // eel.ReadQuestion(question.innerHTML)();
+        if (item == "yes") {
+            read_question();
+        }
+        return false;
+    }
+    else {
+        var confirmed = 1;
+        if (item == "yes") {
+            confirmed = await confirm_response(c);
+            //eel.print_terminal("confirmed:"+confirmed)
+        }
+        if (currentTab == x.length-1 && confirmed == 1) {
+            window.location.assign("show_responses.html");
+        }
+    }
+}
+
 async function next_prev(n) {
     var item = localStorage.getItem("activate_voice");
     var x = document.getElementsByClassName("tab");
@@ -395,10 +420,6 @@ async function add_cities(c) {
 function open_popup() {
     var modal = document.getElementById("myModal");
     var text = modal.querySelector(".modal-content p");
-    var item = localStorage.getItem("activate_voice");
-    if (item == "yes") {
-        eel.ReadQuestion(text.innerHTML);
-    }
     modal.style.display = "block";
 }
 
@@ -410,5 +431,7 @@ function close_popup() {
 function submit_form() {
     //document.getElementById("regForm").submit();
     eel.SaveData();
-    eel.DeleteTemp()();
+    eel.ReadQuestion("Responses Submitted. Thank you")
+    window.location.assign("detect_face.html");
+
 }

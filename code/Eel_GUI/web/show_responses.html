@@ -33,3 +33,12 @@
         </div>
     </div>
 </body>
+
+<script type="text/javascript">
+    var item = localStorage.getItem("activate_voice");
+    if (item == "yes") {
+        eel.ReadQuestion("The Responses will be submitted")();
+        document.getElementsByClassName("next-button")[0].click();
+    }
+    
+</script>

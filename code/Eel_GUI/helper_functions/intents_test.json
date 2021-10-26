@@ -20,7 +20,7 @@
             "intent": "selelct",
             "name": "Disability certificate",
             "question": [
-                "Do you have a disability Certificate? Select one of the following."
+                "Do you have a Disability Certificate? Select one of the following."
             ],
             "options": [
                 "Yes",

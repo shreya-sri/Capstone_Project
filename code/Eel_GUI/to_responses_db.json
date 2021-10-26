@@ -1,0 +1,61 @@
+{
+    "parent": {
+        "database_id": "e02ec9e7d63546cc951929e0a3aed58b"
+    },
+    "properties": {
+        "Gender": {
+            "rich_text": [
+                {
+                    "text": {
+                        "content": "Female"
+                    }
+                }
+            ]
+        },
+        "Date of birth": {
+            "rich_text": [
+                {
+                    "text": {
+                        "content": "2000-12-22"
+                    }
+                }
+            ]
+        },
+        "Address": {
+            "rich_text": [
+                {
+                    "text": {
+                        "content": "Century Indus Apartment"
+                    }
+                }
+            ]
+        },
+        "Category": {
+            "rich_text": [
+                {
+                    "text": {
+                        "content": "General"
+                    }
+                }
+            ]
+        },
+        "Name": {
+            "rich_text": [
+                {
+                    "text": {
+                        "content": "Shreya sri"
+                    }
+                }
+            ]
+        },
+        "Aadhar_number": {
+            "title": [
+                {
+                    "text": {
+                        "content": "5353 2281 6792"
+                    }
+                }
+            ]
+        }
+    }
+}
