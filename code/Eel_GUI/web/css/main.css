@@ -18,6 +18,7 @@ body {
     background-color: #1f2833;
     height: 15.625vw;
     width: 12.5vw;
+    display: none;
     margin-top: 0.625vw;
     padding-top: 1.25vw;
     text-align: center;

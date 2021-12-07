@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Welcome!</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300&display=swap">
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="/eel.js"></script>
+</head>
+
+<body>
+    <div class="div1 animated fadeInTop">
+        <h1 style="color: #66fcf1; font-size: 4.5vw; text-align: center;">The data collected is confidential and will not be sent to any third party organizations.</h1>
+        <h1 style="color: #66fcf1; font-size: 3.75vw; text-align: center;">Do you agree to share your personal data?</h1>
+        <a class ="continue" style="display: none;"></a>
+    </div>
+
+    <script>
+        function read_text() {
+             var question = document.getElementsByTagName("h1");
+             for (var i=0; i<question.length; i++) {
+                 eel.ReadQuestion(question[i].innerHTML)();
+             }
+             listen();
+         }
+         read_text();
+ 
+         async function listen() {
+             var val = await eel.ListenResponse()();
+             if(!val){read_text();}
+             var ele = document.getElementsByClassName('continue')[0];
+             if (val.includes("yes") || val.includes("agree")) {
+                 ele.setAttribute('href', 'main.html');
+                 ele.click();
+             }
+             else if (val.includes("no")) {
+                ele.setAttribute('href', 'detect_face.html');
+                ele.click();
+             }
+            else {
+                read_text();
+            }
+         }
+     </script>
+</body>
