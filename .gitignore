@@ -13,8 +13,7 @@ code/Eel_GUI/helper_functions/face_detection/__pycache__/
 code/Eel_GUI/helper_functions/face_recognition/__pycache__/
 code/Eel_GUI/database/__pycache__/
 
-
-#ignore tgenerated files
+#ignore generated files
 code/Eel_GUI/output.wav
 code/Eel_GUI/face.jpg
 code/Eel_GUI/live.png
@@ -33,3 +32,5 @@ code/Eel_GUI/helper_functions/face_recognition/SECRET.json
 code/Eel_GUI/helper_functions/aadhar_detection/API_key.json
 code/Eel_GUI/helper_functions/key.json
 
+#redundant shit
+code/Eel_GUI/helper_functions/output.mp3
