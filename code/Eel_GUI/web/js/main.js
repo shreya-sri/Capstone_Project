@@ -8,6 +8,7 @@ function move() {
         if (width >= 100) {
           clearInterval(id);
           x.style.display = "inline-block";
+          x.click();
         } 
         else {
             width++; 

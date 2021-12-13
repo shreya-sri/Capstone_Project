@@ -18,6 +18,7 @@ body {
     background-color: #1f2833;
     height: 15.625vw;
     width: 12.5vw;
+    display: none;
     margin-top: 0.625vw;
     padding-top: 1.25vw;
     text-align: center;
@@ -263,6 +264,12 @@ input[type="checkbox"]:checked {
     width: 50%;
 }
 
+.photo {
+    align-content: center;
+    margin-left: 25%;
+    width: 50%;
+}
+
 .capture {
     position: absolute;
     top: 6vw;
@@ -312,4 +319,11 @@ input[type="checkbox"]:checked {
     color: #ffffff;
     text-decoration: none;
     cursor: pointer;
+}
+
+table {
+    margin-left: 5%;
+    margin-right: 5%;
+    padding-left: 10%;
+    padding-right: 10%;
 }

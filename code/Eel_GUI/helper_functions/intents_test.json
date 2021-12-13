@@ -1,0 +1,31 @@
+{
+    "root": [
+        {
+            "type": "choice",
+            "intent": "select",
+            "name": "Category",
+            "question": [
+                "Please select your Category."
+            ],
+            "options": [
+                "General",
+                "SC",
+                "ST",
+                "OBC",
+                "Other"
+            ]
+        },
+        {
+            "type": "radio",
+            "intent": "selelct",
+            "name": "Disability certificate",
+            "question": [
+                "Do you have a Disability Certificate? Select one of the following."
+            ],
+            "options": [
+                "Yes",
+                "No"
+            ]
+        }
+    ]
+}

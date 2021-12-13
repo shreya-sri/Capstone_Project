@@ -1,0 +1,52 @@
+{
+    "parent": {
+        "database_id": "e02ec9e7d63546cc951929e0a3aed58b"
+    },
+    "properties": {
+        "Gender": {
+            "rich_text": [
+                {
+                    "text": {
+                        "content": "Male"
+                    }
+                }
+            ]
+        },
+        "Address": {
+            "rich_text": [
+                {
+                    "text": {
+                        "content": "SRMAB"
+                    }
+                }
+            ]
+        },
+        "Category": {
+            "rich_text": [
+                {
+                    "text": {
+                        "content": "General"
+                    }
+                }
+            ]
+        },
+        "Name": {
+            "rich_text": [
+                {
+                    "text": {
+                        "content": "Pranav"
+                    }
+                }
+            ]
+        },
+        "Aadhar_number": {
+            "title": [
+                {
+                    "text": {
+                        "content": "7720 5883 9966"
+                    }
+                }
+            ]
+        }
+    }
+}
