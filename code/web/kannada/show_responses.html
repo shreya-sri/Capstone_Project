@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Responses</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script type="text/javascript" src="/eel.js"></script>
+    <script type="text/javascript" src="../js/main.js"></script>
+    <script type="text/javascript" src="../js/questions.js"></script>
+</head>
+
+<body onload="show_responses();">
+    <div class="div1 animated fadeInTop">
+        <h1 style="color: #66fcf1; font-size: 4.5vw; text-align: center;">ನಿಮ್ಮ ಪ್ರತಿಸ್ಪಂದನಗಳು</h1>
+        <table>
+        </table>
+        <button class="continue" type="submit" style="display:block;" onclick="open_popup();">ಸಲ್ಲಿಸು</button>
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="close_popup();"></span>
+                <p style="color: rgb(102, 252, 241); font-size: 2.5vw; text-align: center;">ಸಲ್ಲಿಕೆಯನ್ನು ದೃಢೀಕರಿಸಿ?</p>
+                <button class="prev-button" style="margin-top: 0; margin-left: 10%; margin-right: 0; padding: 0.625vw 0.625vw; font-size: 1.25vw;" onclick="close_popup();">ಹಿಂದೆ ಹೋಗು</button>
+                <button class="next-button" style="margin-top: 0; margin-left: 0; margin-right: 10%; padding: 0.625vw 0.625vw; font-size: 1.25vw;" onclick="submit_form();">ದೃಢೀಕರಿಸಿ</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script type="text/javascript">
+    function save_responses() {
+        var item = localStorage.getItem("activate_voice");
+        if (item == "yes") {
+            eel.ReadQuestion_kannada("ಪ್ರತಿಕ್ರಿಯೆಗಳನ್ನು ಸಲ್ಲಿಸಲಾಗುತ್ತದೆ")();
+            document.getElementsByClassName("next-button")[0].click();
+        }
+    }
+    setTimeout(save_responses, 3000);
+</script>
