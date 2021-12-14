@@ -21,12 +21,14 @@ STEP 6: The responses are recorded in the Responses DB
 The file structure is slightly different for the main branch and for final_project_kannada
 
 ### main
-All the code lies in the code folder. Within it, Eel_GUI contains the relevant code. The helper_functions folder contais the differnet modules used, like OCR, face recognition etc.
+All the code lies in the code folder. Within it, Eel_GUI contains the relevant code. The helper_functions folder contanis the differnet modules used, like OCR, face recognition etc.
 
 ### final_project_kannada
-This branch is more organized, with the redundant folders removed. The helper_functions folder is the same, bt it's now directly in code.
+This branch is more organized, with the redundant folders removed. The helper_functions folder is the same, but it's now directly in code.
 
 ## Execution
+To install requirements, use "pip install -r requirements.txt".
+
 To execute the main branch, go to the Eel_GUI folder on command prompt and enter "python app.py".
 To execute the final_project_kannada branch, enter "python app.py" in the code folder itself.
 
