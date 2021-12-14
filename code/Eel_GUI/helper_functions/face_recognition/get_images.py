@@ -3,7 +3,7 @@ import json
 import os
 
 db_path="db.json"
-faces_path='faces'
+faces_path=os.path.join(os.path.dirname(os.path.realpath(__file__)), 'faces')
 
 data  = json.loads(open(db_path).read())
 

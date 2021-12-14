@@ -7,12 +7,15 @@ import sys
 
 
 #Get training data
-import notion_db
-import get_images
+from helper_functions.face_recognition import notion_db
+from helper_functions.face_recognition import get_images
 
 #get paths of each file in folder named Images
 #Images here contains my data(folders of various persons)
-imagePaths = list(paths.list_images('faces'))
+faces_path=os.path.join(os.path.dirname(os.path.realpath(__file__)), 'faces')
+print(faces_path)
+imagePaths = list(paths.list_images(faces_path))
+
 #print(imagePaths)
 knownEncodings = []
 knownNames = []

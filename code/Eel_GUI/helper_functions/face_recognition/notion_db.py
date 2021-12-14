@@ -1,7 +1,10 @@
 import json, requests
+import os
 
+#secret_path = os.path.join(os.getcwd(), 'SECRET.json')
+secret_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'SECRET.json')
 
-data = json.loads(open('SECRET.json').read()) # Opens the file
+data = json.loads(open(secret_path).read()) # Opens the file
 # Secret here:
 secret = data['id']
 

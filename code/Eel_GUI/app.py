@@ -15,6 +15,7 @@ from helper_functions.responses_to_json import create_json_db
 #from database.query_aadhar_db import queryAadhar
 from helper_functions.face_recognition.faceRec import faceRec
 
+from helper_functions.face_recognition import faceRec_train
 
 response_dict = dict()
 downloads_path = os.path.join(os.path.expanduser('~'), 'downloads')
