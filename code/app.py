@@ -15,6 +15,7 @@ from helper_functions.aadhar_detection.detect_aadhar import DetectAadhar
 from helper_functions.responses_to_json import create_json_db
 #from database.query_aadhar_db import queryAadhar
 from helper_functions.face_recognition.faceRec import faceRec
+from helper_functions.face_recognition import faceRec_train
 
 
 response_dict = dict()
@@ -217,6 +218,6 @@ def AddFile(file):
 
 
 eel.init('web')
-eel.start('detect_face.html', mode='chrome', cmdline_args=['--kiosk'])
-#eel.start('user_agreement.html', mode='chrome', cmdline_args=['--kiosk'])
+#eel.start('detect_face.html', mode='chrome', cmdline_args=['--kiosk'])
+eel.start('user_agreement.html', mode='chrome', cmdline_args=['--kiosk'])
 

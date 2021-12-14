@@ -1,0 +1,30 @@
+{
+    "2940 6559 1598": {
+        "Gender": "Male",
+        "Address": "Skyline Ambrosia",
+        "Date of birth": "1999-12-09",
+        "Photo": "https://s3.us-west-2.amazonaws.com/secure.notion-static.com/25b5b71e-387c-4606-ae35-f02d64767cb8/Mali.jpeg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20211214%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20211214T054346Z&X-Amz-Expires=3600&X-Amz-Signature=aa316f6a0a7122b62a34ad74b7a14f2a8b677f1d03b655d577625b54573fab1c&X-Amz-SignedHeaders=host&x-id=GetObject",
+        "Name": "Rithik Rajendra Mali"
+    },
+    "7720 5883 9966": {
+        "Gender": "Male",
+        "Address": "Skyline Ambrosia",
+        "Date of birth": "2000-06-23",
+        "Photo": "https://s3.us-west-2.amazonaws.com/secure.notion-static.com/4d4e9ade-de60-4ad9-aeb1-39bb549c0b5e/capture.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20211214%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20211214T054346Z&X-Amz-Expires=3600&X-Amz-Signature=a9edddbb8440725981b8de23fbb97a128fe84cdc6581f409c095f3aceed0fcc5&X-Amz-SignedHeaders=host&x-id=GetObject",
+        "Name": "Pranav S Nair"
+    },
+    "1234 5678 9012": {
+        "Gender": "Female",
+        "Address": "Jayamahal",
+        "Date of birth": "2000-05-02",
+        "Photo": "https://s3.us-west-2.amazonaws.com/secure.notion-static.com/0d8f83de-066c-4b71-9e8e-521f1cdeba3f/bush.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20211214%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20211214T054346Z&X-Amz-Expires=3600&X-Amz-Signature=e1905cf86003a50b43c31f37708f52d80a27ff1938d0e3faa1a31198c8197e6a&X-Amz-SignedHeaders=host&x-id=GetObject",
+        "Name": "Mahah S"
+    },
+    "5353 2281 6792": {
+        "Gender": "Female",
+        "Address": "Century Indus Apartment",
+        "Date of birth": "2000-12-22",
+        "Photo": "https://s3.us-west-2.amazonaws.com/secure.notion-static.com/2dcc931b-0fa8-4452-bdda-96be00771de4/shreya_photo.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20211214%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20211214T054346Z&X-Amz-Expires=3600&X-Amz-Signature=1132dd29c83c648f499af178726e1fa0bd18d23403f5a2c0e135bb6e3d9f9c6b&X-Amz-SignedHeaders=host&x-id=GetObject",
+        "Name": "Shreya sri"
+    }
+}
