@@ -17,16 +17,16 @@ STEP 5: After each response is spoken out by the user, the response is reconfirm
 STEP 6: The responses are recorded in the Responses DB
 
 
-##File Structure
+## File Structure
 The file structure is slightly different for the main branch and for final_project_kannada
 
-###main
+### main
 All the code lies in the code folder. Within it, Eel_GUI contains the relevant code. The helper_functions folder contais the differnet modules used, like OCR, face recognition etc.
 
-###final_project_kannada
+### final_project_kannada
 This branch is more organized, with the redundant folders removed. The helper_functions folder is the same, bt it's now directly in code.
 
-##Execution
+## Execution
 To execute the main branch, go to the Eel_GUI folder on command prompt and enter "python app.py".
 To execute the final_project_kannada branch, enter "python app.py" in the code folder itself.
 
