@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Welcome!</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300&display=swap">
+    <script type="text/javascript" src="../js/main.js"></script>
+    <script type="text/javascript" src="/eel.js"></script>
+</head>
+
+<body>
+    <div class="div1 animated fadeInTop">
+        <h1 style="color: #66fcf1; font-size: 4.5vw; text-align: center;">ಸ್ವಾಗತ!</h1>
+        <h1 style="color: #66fcf1; font-size: 3.75vw; text-align: center;">ದಯವಿಟ್ಟು ಬೀಪ್ ಶಬ್ದದ ನಂತರ ಪ್ರತಿಕ್ರಿಯಿಸಿ.</h1>
+        <h1 style="color: #66fcf1; font-size: 3.75vw; text-align: center;">ನಮ್ಮ ಧ್ವನಿ ಸಹಾಯಕನನ್ನು ಬಳಸಲು ನೀವು ಬಯಸುವಿರಾ?</h1>
+    </div>
+
+   
+    <a href="load.html">
+        <div class="voice animated fadeInTop" id="voice_yes" style="float: left; margin-left:25%;" onmouseover="img1_hover();" onclick="enable_voice_yes();">
+            <img src="images/speaker_white.png">
+            <p style="font-size: 1.5625vw;">Use voice assistant</p>
+        </div>
+    </a>
+
+    <a href="load.html">
+        <div class="voice animated fadeInTop" id="voice_no" style="float:right; margin-right:25%;" onmouseover="img2_hover();" onclick="enable_voice_no();">
+            <img src="images/keyboard_white.png">
+            <p style="font-size: 1.5625vw;">Manually enter responses</p>
+        </div>
+    </a>
+
+    <script>
+       function read_text() {
+            var question = document.getElementsByTagName("h1");
+            for (var i=0; i<question.length; i++) {
+                eel.ReadQuestion_kannada(question[i].innerHTML)();
+            }
+            listen();
+        }
+        read_text();
+
+        async function listen() {
+            var val = await eel.ListenResponse_kannada()();
+            if(!val){read_text();}
+            if (val.toLowerCase().includes("yes")) {
+                var ele = document.getElementById("voice_yes");
+                ele.click();
+            }
+            else if (val.toLowerCase().includes("no")) {
+                var ele = document.getElementById("voice_no");
+                ele.click();
+            }
+            else {
+                read_text();
+            }
+        }
+    </script>
+</body>

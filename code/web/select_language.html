@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Welcome!</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300&display=swap">
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="/eel.js"></script>
+</head>
+
+<body>
+    <div class="div1 animated fadeInTop">
+        <h1 id="english" style="color: #66fcf1; font-size: 4.5vw; text-align: center;">Please select your language of choice</h1>
+        <h1 id="kannada" style="color: #66fcf1; font-size: 4.5vw; text-align: center;">ದಯವಿಟ್ಟು ನಿಮ್ಮ ಭಾಷೆಯನ್ನು ಆಯ್ಕೆಮಾಡಿ</h1>
+        <a class ="continue" style="display: none;"></a>
+    </div>
+
+    <script>
+        function read_text() {
+            var question1 = document.getElementById("english");
+            eel.ReadQuestion(question1.innerHTML)();
+            var question2 = document.getElementById("kannada");
+            eel.ReadQuestion_kannada(question2.innerHTML)();
+            listen();
+         }
+         read_text();
+ 
+         async function listen() {
+             var val = await eel.ListenResponse()();
+             if(!val){read_text();}
+             var ele = document.getElementsByClassName('continue')[0];
+             if (val.toLowerCase().includes("english")) {
+                localStorage.setItem("language", 0);
+                ele.setAttribute('href', 'user_agreement.html');
+                 ele.click();
+             }
+             else if (val.toLowerCase().includes("kannada")) {
+                localStorage.setItem("language", 1);
+                ele.setAttribute('href', 'kannada/user_agreement.html');
+                ele.click();
+             }
+            else {
+                read_text();
+            }
+         }
+     </script>
+</body>
